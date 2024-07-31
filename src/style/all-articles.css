@@ -1,0 +1,72 @@
+.allArticles {
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.allArticles-columnNames {
+    display: flex;
+    box-shadow: 0 0 15px 3px black;
+}
+.allArticles-columnNames-info {
+    display: flex;
+    flex: 1;
+}
+.allArticles-columnNames-title, .allArticles-columnNames-info > * {
+    padding: 0.7em  0.2em 0.7em  0.2em;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.allArticles-columnNames-title {
+    flex: 0 0 37%; 
+    text-align: center;
+}
+.allArticles-columnNames-note,
+.allArticles-columnNames-dateCreated,
+.allArticles-columnNames-dateUpdated,
+.allArticles-columnNames-datePublished {
+    flex: 0 0 20%;
+    text-align: center;
+}
+.allArticles-columnNames-delete,
+.allArticles-columnNames-publish {
+    flex: 0 0 10%;
+    text-align: center;
+}
+
+.allArticles-columnNames-text span {
+    padding: 0 0.5em 0 0.5em
+}
+.fa-arrow-up, .fa-arrow-down {
+    cursor: pointer;
+    transition: transform 250ms;
+}
+.fa-arrow-up:hover, .fa-arrow-down:hover {
+    color: rgb(0, 167, 0);
+}
+.activeArrow {
+    color:rgb(0, 167, 0);
+    transform: scale(1.5);
+}
+
+@media all and (max-width: 748px) {
+   
+    .allArticles-columnNames-dateCreated,
+    .allArticles-columnNames-dateUpdated,
+    .allArticles-columnNames-datePublished {
+        flex: 0 0 29.166%;
+
+    }
+    .allArticles-columnNames-delete,
+    .allArticles-columnNames-publish {
+        flex: 0 0 12.5%;
+    }
+    .allArticles-columnNames-delete {
+        border-right: none;
+    }
+    .allArticles-columnNames-publish {
+        display: none;
+    }
+}

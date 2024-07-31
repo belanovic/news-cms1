@@ -1,0 +1,63 @@
+.imgCropper {
+    display: flex;
+}
+.imgContainer {
+    background: white;
+    border: 1px solid black;
+}
+.inputImage {
+    margin-bottom: 0.5em;
+}
+.inputGeneric {
+    margin-bottom: 1em;
+}
+.buttons {
+    width: 350px;
+    padding: 0 1.5em 0 1.5em;
+}
+.crop-btn {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    color: grey;
+    background: white;
+    border: 1px solid black;
+    font-size: 2.75rem;
+    padding: 0.1em 0.3em 0.1em 0.3em;
+    transition: transform 250ms;
+    border-radius: 5px;
+}
+.crop-btn:hover {
+    cursor: pointer;
+    color: green;
+}
+.crop-btn:active {
+    transform: scale(0.97, 0.97);
+}
+
+.ReactCrop div {
+    width: 620px;
+}
+
+.ReactCrop div img {
+    width: 100%;
+}
+
+.previewCanvas {
+    display: none;
+}
+
+@media all and (max-width: 1024px) {
+    .article-photo {
+        padding: 0 1em 0 1em;
+    }
+    .imgCropper {
+        flex-direction: column;
+     
+    }
+    .ReactCrop div {
+        width: 100%;
+    }
+    .crop-btn {
+        margin: 1em 0 0.5em 0;
+    }
+}

@@ -1,0 +1,70 @@
+/*calendar*/
+
+/* .calendar-wrapper input {
+    border: 2px solid blue;
+} */
+
+.calendar-wrapper {
+    background: white;
+    padding: 0.2em 2em 0.2em 2em;
+}
+
+.calendar-container {
+    display: inline-block;
+    margin-right: 2em;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: black
+}
+
+.calendar-container.active {
+    cursor: pointer;
+    pointer-events: all;
+    color: black}
+
+/* .calendar-select:hover {
+    cursor: pointer;
+} */
+
+
+.calendar-select span {
+    margin-right: 0.5em;
+}
+
+.react-calendar {
+    position: absolute;
+    display: none;
+}
+
+.fa-search {
+    display: none;
+}
+
+.react-calendar.show {
+    display: block;
+}
+
+.search-button.sending {
+    background: rgb(81, 219, 1);
+    cursor: pointer;
+}
+
+.fa-calendar-alt.show {
+    transform: scale(1.11)
+}
+/* .fa-calendar-alt:hover {
+    cursor: pointer;
+}
+ */
+
+
+@media all and (max-width: 748px) {
+
+    .fa-search {
+        display: block;
+    }
+    .fa-search:hover {
+        cursor: pointer;
+    }
+}
+

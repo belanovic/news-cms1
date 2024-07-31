@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cms {
+ 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Fthumbs%2Fbkg2.jpg?alt=media&token=ed25428d-f025-46d7-b82b-547052d3a012');
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Ftypewriter6.jpg?alt=media&token=4be6d1d9-f64f-4ca0-a733-94969d18ef15');
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Fnewspaper6.jpg?alt=media&token=cf4a9604-2519-42ca-a882-c47072a061d6');
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Fthumbs%2Fskrin.png?alt=media&token=915e702c-283c-49b1-8995-d3ca18a885c5'); 
+}
+
+
+.cmsOverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textdiv {
+    min-height: 50px;
+    width: 400px;
+    background: yellow;
+}
+input, textarea, select {
+    background-color: white;
+}
+
+
+@media all and (max-width: 1024px) {
+    html {
+        font-size: 9px;
+    }
+}

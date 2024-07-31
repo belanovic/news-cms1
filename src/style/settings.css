@@ -1,0 +1,358 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em 2em 2em 2em;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Fthumbs%2Fbkg2.jpg?alt=media&token=ed25428d-f025-46d7-b82b-547052d3a012');
+    background-size: contain;
+}
+
+
+/* naslov sajta */
+
+.settings .name {
+    margin-bottom: 4em;
+/*     box-shadow: 0 0 20px 5px rgb(84, 84, 84);
+ */    border: 1px solid white;
+    padding: 2em;
+}
+.settings .name-text {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+}
+.settings .name input {
+    font-size: 2rem;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+/* top */
+
+
+.settings .top {
+    margin-bottom: 4em;
+    box-shadow: 0 0 20px 0 black;
+    border: 1px solid white;
+    padding: 2em;
+    text-align: center;
+}
+.settings .top-text {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+}
+
+/*********** colors *************/
+
+.colors {
+    box-shadow: 0px 0px 10px 0px black;
+    border: 1px solid white;
+    padding: 1em 5em 4em 5em;
+    margin-bottom: 4em;
+}
+
+.colors-title {
+    margin-bottom: 1em;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+
+.colors-container {
+    display: flex;
+}
+.colors-item {
+    margin-right: 3em;
+}
+.colors-item:last-child {
+    margin-right: 0;
+}
+
+/* sitecolor */
+
+.settings .sitecolor {
+    box-shadow: 0 0 20px 0 rgb(83, 83, 83);
+    
+    padding: 2em;
+    color: white;
+    text-align: center;
+}
+.settings .sitecolor-title {
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.sitecolor-title-bkg, .sitecolor-text div {
+    text-align: left;
+    color: white;
+    font-style: oblique;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.settings .sitecolor-pickers {
+    margin-bottom: 2em;
+}
+.settings .sitecolor-deg {
+    margin-bottom: 3em;
+}
+
+.settings .sitecolor input {
+    margin-right: 1em;
+}
+
+.settings .sitecolor-deg div {
+    font-size: 1.5rem;
+}
+
+.sitecolor-text {
+    margin-bottom: 4em;
+}
+
+/* supertitleColor */
+
+.settings .supertitleColor {
+    box-shadow: 0 0 20px 0 rgb(83, 83, 83);
+    padding: 2em;
+    text-align: center;
+    color: white;
+}
+.settings .supertitleColor-title {
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.supertitleColor-title-bkg, .supertitleColor-text div {
+    text-align: left;
+    color: white;
+    font-style: oblique;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.settings .supertitleColor-pickers {
+    margin-bottom: 2em;
+}
+
+.settings .supertitleColor-deg {
+    margin-bottom: 3em;
+}
+
+.settings .supertitleColor input {
+    margin-right: 1em;
+}
+
+.settings .supertitleColor-deg div {
+    font-size: 1.5rem;
+}
+
+.supertitleColor-text {
+    margin-bottom: 4em;
+}
+/* readmoreColor */
+
+.settings .readmoreColor {
+    box-shadow: 0 0 20px 0 rgb(83, 83, 83);
+    padding: 2em;
+    text-align: center;
+    color: white;
+}
+.settings .readmoreColor-title {
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.readmoreColor-title-bkg, .readmoreColor-text div {
+    text-align: left;
+    color: white;
+    font-style: oblique;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.settings .readmoreColor-pickers {
+    margin-bottom: 2em;
+}
+
+.settings .readmoreColor-deg {
+    margin-bottom: 3em;
+}
+
+.settings .readmoreColor input {
+    margin-right: 1em;
+}
+
+.settings .readmoreColor-deg div {
+    font-size: 1.5rem;
+}
+
+.readmoreColor-text {
+    margin-bottom: 4em;
+}
+
+/* socialColor */
+
+.settings .socialColor {
+    box-shadow: 0 0 20px 0 rgb(83, 83, 83);
+    padding: 2em;
+    text-align: center;
+    color: white;
+}
+.settings .socialColor-title {
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.socialColor-title-bkg, .socialColor-text div {
+    text-align: left;
+    color: white;
+    font-style: oblique;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.settings .socialColor-pickers {
+    margin-bottom: 2em;
+}
+
+.settings .socialColor-deg {
+    margin-bottom: 3em;
+}
+
+.settings .socialColor input {
+    margin-right: 1em;
+}
+
+.settings .socialColor-deg div {
+    font-size: 1.5rem;
+}
+
+.socialColor-text {
+    margin-bottom: 4em;
+}
+
+/* carousel */
+
+.carousel {
+    text-align: center;
+    margin-bottom: 2em;
+    border: 1px solid white;
+    padding: 2em;
+}
+.carousel-title {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* templejt */
+
+
+.settings .template {
+    margin-bottom: 5em;
+
+    box-shadow: 0 0 20px 0 black;
+    border: 1px solid white;
+    padding: 3em;
+}
+
+.settings .template-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.template-options {
+    display: flex;
+    color: white;
+    margin-bottom: 1.5em;
+
+}
+
+.template .option {
+    box-shadow: 0 0 10px 0 rgb(83, 83, 83);
+    border: 3px solid rgba(148, 148, 148, 0);
+    border-radius: 15px;
+    padding: 10px 10px 10px 0px;
+    margin-right: 1em;
+    transition: all 0.5s;
+}
+
+.template .option:hover {
+    cursor: pointer;
+}
+
+.template .option.active {
+    /* background-color: rgb(0, 0, 0); */
+    border: 3px solid green;
+}
+
+.template .option .label {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+.template ol li {
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+/* custom-template */
+
+.custom-template-title {
+    color: white;
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+}
+
+.custom-template textarea {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 180px;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.25s;
+    resize: vertical;
+}
+.custom-template.active textarea {
+    border: 6px solid green;
+}
+
+/* button */
+
+.update-btn {
+    margin-bottom: 3em;
+    display: block;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    padding: 0.5em 4em 0.5em 4em;
+    box-shadow: 0 0 20px 0 black;
+    color: white;
+    background: green;
+    transition: transform 250ms;
+    transition: background var(--transition-duration-background);
+    border: none;
+}
+
+.update-btn:hover {
+    cursor: pointer;
+    background: rgb(0, 150, 0);
+}
+.update-btn:active {
+    transform: scale(0.97, 0.97);
+    background: rgb(0, 184, 0);
+}
+
+@media all and (max-width: 1024px) {
+    .colors-container {
+        display: block;
+    }
+    .colors-item {
+        margin-right: 0;
+        margin-bottom: 4em;
+    }
+}

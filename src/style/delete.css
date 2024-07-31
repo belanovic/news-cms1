@@ -1,0 +1,58 @@
+.delete {
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5 rem;
+}
+
+.delete .backBtn, .deleteBtn {
+    display: block;
+    margin: auto;
+    margin-bottom: 1.75rem;
+    border: none;
+    letter-spacing: 1px;
+    padding: 0.6em 0.6em 0.6em 0.6em;
+    color: white;
+}
+
+.delete .deleteBtn {
+    width: 30%;
+    font-size: 1.75rem;
+    background: #b20303;
+    transition: background var(--transition-duration-background);
+    box-shadow: 5px 5px 5px 0px rgb(63, 63, 63);
+}
+
+.delete .backBtn {
+    width: 20%;
+    font-size: 1.25rem;
+    background: rgba(0, 98, 0, 0.7);
+    transition: background var(--transition-duration-background);
+    box-shadow: 5px 5px 5px 0px rgb(63, 63, 63);
+}
+
+.delete button:active {
+    transform: scale(0.99, 0.92);
+}
+
+.delete .deleteBtn:hover  {
+    cursor: pointer;
+    background: rgba(178, 3, 3, 0.7);
+}
+
+.delete .backBtn:hover {
+    cursor: pointer;
+    background: rgba(0, 150, 0, 0.7);
+}
+
+
+@media all and (max-width: 1024px) {
+    .delete .deleteBtn {
+        width: 75%;
+    }
+    .delete .backBtn {
+        width: 50%;
+    }
+}

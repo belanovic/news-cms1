@@ -1,0 +1,41 @@
+.search-label {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.5rem;
+    padding: 0.2em 0.3em 0.2em 0.2em;
+    background: black;
+    color: white;
+    margin-bottom: 0.7em;
+}
+
+.search-label:hover {
+    cursor: pointer;
+}
+
+.search-label-fake {
+    visibility: hidden;
+}
+
+.search-label-text {
+    font-family: 'Times New Roman', Times, serif
+}
+
+.search-label .fa-chevron-down {
+    transition: transform 0.25s;
+    transform: rotateZ(0deg);
+}
+.search-label .fa-chevron-down.up {
+    transform: rotateZ(180deg)
+}
+
+.search-label .fa-chevron-down:hover {
+    cursor: pointer;
+    color: red;
+}
+
+@media all and (max-width: 1024px) {
+    .search-label {
+        display: flex;
+    }
+}

@@ -1,0 +1,47 @@
+.save-article {
+    flex: 1;
+}
+.save-article.desktop .save-button {
+    display: block;
+}
+.save-article.mobile .save-button {
+    display: none;
+}
+.save-button {
+    display: block;
+    width: 10rem;
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+    padding: 0.2em 1.3em 0.2em 1.3em;
+    margin-left: 1em;
+    color: white;
+    background: green;
+    transition: transform 50ms;
+    transition: background var(--transition-duration-background);
+    border: none;
+}
+
+.save-button:hover {
+    cursor: pointer;
+    background: rgb(0, 150, 0);
+}
+.save-button:active {
+    transform: scale(0.97, 0.97);
+    background: rgb(0, 184, 0);
+    border: 1px solid black;
+}
+
+@media all and (max-width: 1024px) {
+    .save-article.desktop .save-button{
+        display: none;
+    }
+    .save-article.mobile .save-button {
+        display: block;
+    }
+    .save-article.mobile {
+        padding-top: 1em;
+    }
+    .save-article.mobile .save-button {
+        margin-left: auto;
+    }
+}

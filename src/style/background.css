@@ -1,0 +1,40 @@
+/* .cms {
+  background: linear-gradient(#000000 25%, #5e5e5e 50%, #5f5f5f 50%, #000000 100%);
+} */
+
+.background {
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+  perspective: 360px;
+  perspective-origin: 50% 50%;
+  z-index: -2;
+}
+
+.top-plane, .bottom-plane {  
+  width: 200%;
+  height: 130%;
+  position: absolute;
+  bottom: -30%;
+  left: -50%;
+  background-image: -webkit-linear-gradient(#ac0000 2px, transparent 2px), -webkit-linear-gradient(left, #ac0000 2px, transparent 2px);
+  background-size: 100px 100px, 100px 100px;
+  background-position: -1px -1px, -1px -1px;
+  transform: rotateX(85deg);
+
+}
+
+.bottom-plane {
+  transform: rotateX(-85deg);
+  top: -30%;
+}
+
+@media (max-height: 350px) {
+  .wrap {
+    perspective: 210px;
+  }
+}

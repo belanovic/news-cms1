@@ -1,0 +1,12 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    background: rgb(205, 205, 205);
+
+}
+.currentBtn {
+    font-size: 2rem;
+    color: white;
+    background: rgb(32, 32, 32);
+ 
+}

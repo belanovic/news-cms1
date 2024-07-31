@@ -1,0 +1,190 @@
+.call {
+    background: white;
+    border: solid black 5px;
+    margin: 15px;
+    padding: 15px;
+}
+
+.call-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    background-color: black;
+    padding: 2em;
+    height: 230px;
+}
+
+.calling-callee, .calling-caller {
+    justify-content: center;
+    align-items: center;
+    font-size: 2.75rem;
+    color: white;
+    margin-bottom: 0.5em;
+}
+
+.disconnect {
+   margin-top: auto;
+}
+
+.disconnect-button {
+    background:linear-gradient(rgb(218, 0, 0), rgb(255, 110, 110));
+    color: white;
+    padding: 0.75em;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.disconnect-button:hover {
+    cursor: pointer;
+    background:linear-gradient(rgb(133, 0, 0), rgb(246, 68, 68));
+}
+
+.disconnect-button:active {
+    transform: scale(0.99, 0.99);
+}
+
+.disconnect-caption {
+    text-align: center;
+    color: white;
+}
+
+.disconnect .fa-phone-slash {
+    font-size: 2rem;
+}
+
+.call-answer {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.accept, .reject {
+    flex: 0 0 30%;
+    text-align: center;
+}
+
+.accept-button {
+    background: linear-gradient(green, rgb(0, 184, 0));
+    padding: 0.75em;
+    border-radius: 50%;
+    margin-bottom: 0.5em;
+}
+.reject-button {
+    background: linear-gradient(rgb(218, 0, 0), rgb(255, 82, 82));
+    padding: 0.75em;
+    border-radius: 50%;
+    margin-bottom: 0.5em;
+}
+
+.accept-button:hover {
+    cursor: pointer;
+    background: linear-gradient(rgb(0, 97, 0), rgb(0, 156, 0));
+}
+ .reject-button:hover {
+    cursor: pointer;
+    background: linear-gradient(rgb(161, 0, 0), rgb(253, 50, 50));
+}
+.accept-button:active, .reject-button:active {
+    transform: scale(0.99, 0.99);
+}
+
+.accept-button .fa-phone {
+    font-size: 2rem;
+    color: white;
+}
+
+.reject-button .fa-phone-slash {
+    font-size: 2rem;
+    color: white;
+}
+
+.accept-caption, .reject-caption {
+    text-align: center;
+    color: white;
+}
+.talker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.talker-caption {
+    border: 2px dotted white;
+    border-radius: 50%;
+    color: white;
+    font-size: 2.75rem;
+    text-align: center;
+    padding: 1em;
+}
+.call-duration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.duration-numbers {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* video */
+
+.video-container {
+    position: relative;
+}
+
+.video {
+    
+}
+
+.local-video {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    /* border: 2px solid black; */;
+    box-shadow: inset 0px 0px 0px 5px rgb(49, 49, 49);
+    transition: width 250ms;
+    background: rgb(0, 0, 0);
+}
+
+.local-video.show {
+    width: 30%;
+}
+.local-video.hide {
+    width: 0;
+}
+
+.local-video video {
+    width: 100%;
+}
+
+.toggle-video  {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+}
+
+.video-container:hover .toggle-video {
+    display: block;
+}
+
+.toggle-video .fa-eye, .toggle-video .fa-eye-slash {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.toggle-video .fa-eye:hover, .toggle-video .fa-eye-slash:hover {
+    cursor: pointer;
+}
+
+.remote-video {
+    background: rgb(31, 31, 31);
+}
+
+.remote-video video {
+    width: 100%;
+}
