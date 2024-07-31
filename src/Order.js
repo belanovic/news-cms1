@@ -142,6 +142,15 @@ export default function Order() {
     return (
 
         <div className="order">
+            <div className="order-send">
+                <button
+                    className={`order-send-button ${requestSent && 'sending'}`}
+                    onClick={() => {
+                        handleClickOrder();
+                    }}
+                    disabled={requestSent ? true : false}
+                >{requestSent ? 'Ordering...' : 'Uredi'}</button>
+            </div>
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="order-articles-dpl">
                     {(provided) => {
@@ -212,15 +221,7 @@ export default function Order() {
                     }
                 </Droppable>
             </DragDropContext>
-            <div className="order-send">
-                <button
-                    className={`order-send-button ${requestSent && 'sending'}`}
-                    onClick={() => {
-                        handleClickOrder();
-                    }}
-                    disabled={requestSent ? true : false}
-                >{requestSent ? 'Ordering...' : 'Uredi'}</button>
-            </div>
+
         </div>
 
     )
