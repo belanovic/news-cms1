@@ -19,8 +19,8 @@ export default function Header() {
     return (
         <header className="header" onClick = {() => setShowCalendar(false)}>
             <div className="header-links">
-                <div className="header-links-frontend" style = {{display: showFrontend}} >
-                    <a href = 'https://vestisajt.netlify.app/' target = "_blanc">
+                <div className="header-links-frontend" style = {{display: showFrontend}}>
+                    <a href = {`${link}`} target = "_blanc">
                         <div className="header-links-frontend-title">
                             <i className="fab fa-react"></i>
                             <span>www.vesti.com</span>
