@@ -8,7 +8,6 @@ import imageCompression from 'browser-image-compression';
 import shortenSentence from './shortenSentence';
 import HOST_CHAT from './hostChat.js';
 /* import Call from './Call'; */
-import ReactDOM from 'react-dom'
 
  
 const soundCheck = new Audio('https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-sounds%2F590274__mrfossy__sfx-stickerripper-cluckbuttons-06.wav?alt=media&token=7e31eb83-1283-46ea-bfa3-302cba453d70')
@@ -44,6 +43,7 @@ export default function Chat() {
     const [usernameLoggedIn, setUsernameLoggedIn] = useState('');
     const [text, setText] = useState('')
     const [messages, setMessages] = useState([]);
+    const [messageSentorRecieved, setMessageSentorRecieved] = useState(true);
 
     const [messageToReply, setMessageToReply] = useState('');
     const [messageToReplyDisplay, setMessageToReplyDisplay] = useState('');
@@ -204,7 +204,8 @@ export default function Chat() {
             setMessages((prev) => {
                 return [...prev, payload ]
             })
-            chatMessages.current.scrollTop = 1000000;
+            setMessageSentorRecieved((prev) => !prev);
+            
         })
         socket.on('check', (payload) => {
             setMessages((prev) => {
@@ -221,7 +222,8 @@ export default function Chat() {
         })
         socket.on('messagesDB', (messagesDB) => {
             setMessages(messagesDB);
-            chatMessages.current.scrollTop = 1000000;
+            setMessageSentorRecieved((prev) => !prev);
+
         })
     
         return () => {
@@ -230,6 +232,10 @@ export default function Chat() {
             socket.removeListener('messagesDB');
         }
     }, [])
+
+    useEffect(() => {
+        chatMessages.current.scrollTop = 1000000;
+    }, [messageSentorRecieved])
 
 /*     useEffect(() => {
        roomsCall.some(prom => )
