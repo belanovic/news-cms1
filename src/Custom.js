@@ -15,7 +15,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
             color: '#ffffff',
             background: 'black',
             align: 'center'
-        },
+        }, 
         body: {
             firstArticlePosition: 46,
             count: 4,
