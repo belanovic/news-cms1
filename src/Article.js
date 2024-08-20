@@ -258,9 +258,10 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                             setShowCmsOverlay('none');
                             return;
                         }
-                        setDeployedImgName(imgName)
+                        setDeployedImgName(imgName);
+                        setDeployedImgURL(photoURL);
                         if(deployedImgName !== 'generic') {
-                            const deletionMsg = await removeImageDB(deployedImgName, '');
+                            const deletionMsg = await removeImageDB(deployedImgName, '', deployedImgURL);
                             if(deletionMsg == null) {
                                 alert('Problem sa brisanjem prethodne fotografije')
                             }
@@ -280,9 +281,10 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                             setShowCmsOverlay('none');
                             return;
                         }
-                        setDeployedImgName2(imgName2)
+                        setDeployedImgName2(imgName2);
+                        setDeployedImgURL2(photoURL2);
                         if(deployedImgName2 !== 'generic') {
-                            const deletionMsg2 = await removeImageDB(deployedImgName2, '');
+                            const deletionMsg2 = await removeImageDB(deployedImgName2, '', deployedImgURL2);
                             if(deletionMsg2 == null) {
                                 alert('Problem sa brisanjem prethodne fotografije')
                             }
@@ -298,8 +300,9 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                         return;
                     }
                     setDeployedVideoName(videoName);
+                    setDeployedVideoURL(videoURL);
                     if(deployedVideoName !== 'none') {
-                        const deletionMsg = await removeVideoDB(deployedVideoName);
+                        const deletionMsg = await removeVideoDB(deployedVideoName, deployedVideoURL);
                         if(deletionMsg == null) {
                             alert('Problem sa brisanjem starog videa')
                         }

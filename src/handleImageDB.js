@@ -21,14 +21,15 @@ export async function uploadImageDB(imgName, imgFile, folder) {
     }
 }
 
-export async function removeImageDB(imgName, folder) {
+export async function removeImageDB(imgName, folder, deployedImgURL) {
 
     try {
-        const imgRef = await storage.ref(`${imagesFolder}/${folder}` + imgName);
+        const imgRef = storage.ref(`${imagesFolder}/${folder}` + imgName);
+        if((imagesFolder != 'site-news-images') && (deployedImgURL.includes('site-news-images%'))) return;
         const promiseResolve = await imgRef.delete();
         return 'image deleted'
     } catch (error) {
-        alert(error.message)
+        console.log(error.message)
         return null
     }
 }
