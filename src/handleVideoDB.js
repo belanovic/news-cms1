@@ -23,7 +23,7 @@ export async function uploadVideoDB (videoName, videoFile) {
 }
 export async function removeVideoDB(videoName, deployedVideoURL) {
     try {
-        const videoRef = await storage.ref(`${imagesFolder}/` + videoName);
+        const videoRef = storage.ref(`${imagesFolder}/` + videoName);
         if((imagesFolder != 'site-news-images') && (deployedVideoURL.includes('site-news-images%'))) return;
         const promiseResolve = await videoRef.delete();
         return 'Videoe deleted'
