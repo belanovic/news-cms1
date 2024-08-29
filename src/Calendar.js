@@ -14,6 +14,7 @@ export default function Calendar({setSelectedDate}) {
         calendarSetCheckValue(prev => !prev);
     }
 
+
     useEffect(() => {
         if(calendarCheckValue == false) {
             setSelectedDate(null)
@@ -23,7 +24,9 @@ export default function Calendar({setSelectedDate}) {
         
     }, [calendarCheckValue])
 
-    useEffect(() => {setSelectedDate(calendarValue)}, [calendarValue])
+    useEffect(() => {
+        setSelectedDate((calendarValue));
+    }, [calendarValue])
 
     return (
         <div
@@ -33,6 +36,9 @@ export default function Calendar({setSelectedDate}) {
                 type = "checkbox"
                 checked = {calendarCheckValue}
                 onChange = {handleCheck}
+  
+
+                
             ></input>
             <div
                 className= {`calendar-container ${calendarCheckValue && 'active'}`}
@@ -51,7 +57,7 @@ export default function Calendar({setSelectedDate}) {
                     onChange={calendarHandleChange}
                     value={calendarValue}
                     className={showCalendar && calendarCheckValue? 'show' : ''}
-                    onClickDay = {() => setShowCalendar(prev => !prev)}
+                    onClickDay = {(e) => {setShowCalendar(prev => !prev)}}
                 />
 
             </div>

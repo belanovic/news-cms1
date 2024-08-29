@@ -18,14 +18,22 @@ export default function Search({pageArticles, pageNum, setPageNum,
             if(done == null) return;
             setPageNum({number: 1, isLast: false});
     }
+    useEffect(() => {
+        async function searchTriggeredByDate () {
+            const done = await pageArticles(category, 1, title, tag, selectedDate );
+            if(done == null) return;
+            setPageNum({number: 1, isLast: false});
+        }
+        searchTriggeredByDate();
+    }, [selectedDate])
 
     return (
         
             <div className = {`search ${searchVisible && 'show'}`}>
                 <Query option = "title" setTag = {setTag} setTitle = {setTitle}  title  = {title}  tag  = {tag} search = {search}/>
                 <Query option = "tag" tag = {tag} setTag = {setTag} setTitle = {setTitle} search = {search} />
-                <Category />
-                <Calendar setSelectedDate = {setSelectedDate} />
+                <Category search = {search}  />
+                <Calendar setSelectedDate = {setSelectedDate} search = {search} />
                 <div 
                     className="search-button"
                 >

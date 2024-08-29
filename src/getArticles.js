@@ -15,6 +15,10 @@ function checkStatus(response) {
     }
 }
 
+function convertUTCDateToLocalDate(date) {
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(),  date.getHours(), date.getMinutes(), date.getSeconds()));
+}
+
 export async function getAllArticles(category, pageNum, title, tag, selectedDate) {
 
     const options = { 
@@ -29,7 +33,7 @@ export async function getAllArticles(category, pageNum, title, tag, selectedDate
             pageNum: pageNum,
             title: title.trim(),
             tag: tag.trim(),
-            selectedDate: selectedDate 
+            selectedDate: selectedDate
         })
     }
 

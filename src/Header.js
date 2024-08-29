@@ -96,11 +96,12 @@ export default function Header() {
             </div>
 
             <div className="header-title">
-        
+                <Link to = '/'>
                     {/* <div
                         className="header-title-text black-ops-one-regular"
                     >CMS</div> */}
                     <img src='https://firebasestorage.googleapis.com/v0/b/site-news-storage.appspot.com/o/site-news-images%2Fthumbs%2Fcms.png?alt=media&token=12bb3d88-b42a-4074-a4a2-553b96e3239b'></img>
+                </Link>
              
             </div>
             {localStorage.getItem('token')?

@@ -4,7 +4,7 @@ import { getAllArticles, getArticle } from './getArticles.js';
 import Calendar from './Calendar.js';
 import './style/category.css';
 
-export default function Category() {
+export default function Category({search}) {
 
     const {category, setCategory } = useContext(context);
 
@@ -19,13 +19,18 @@ export default function Category() {
         <div className="category">
             <div className="category-categories"> 
                 {/* <label htmlFor="category-categories">Rubrike</label> */}
-                <select id="category-categories" value={category} onChange={handleSelect}>
-                    <option value="allArticles">Sve vesti</option>
-                    <option value="politics">Politika</option>  
-                    <option value="technology">Tehnologija</option>
-                    <option value="business">Ekonomija</option>
-                    <option value="entertainment">Magazin</option>
-                    <option value="sports">Sport</option>    
+                <select 
+                    id="category-categories" 
+                    value={category} 
+                    onChange={handleSelect}
+                    onKeyDown={(e) => {if(e.code == 'NumpadEnter' | e.code == 'Enter') search(e)}}
+                >
+                        <option value="allArticles">Sve vesti</option>
+                        <option value="politics">Politika</option>  
+                        <option value="technology">Tehnologija</option>
+                        <option value="business">Ekonomija</option>
+                        <option value="entertainment">Magazin</option>
+                        <option value="sports">Sport</option>    
                 </select>
             </div>   
         </div>
