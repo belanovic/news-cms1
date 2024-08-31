@@ -9,7 +9,7 @@ const cookies = new Cookies();
 
 let link;
 if(process.env.REACT_APP_COPY == '0') link = `https://vestisajt.netlify.app/`;
-if(process.env.REACT_APP_COPY != '0') link = `https://vestisajt${process.env.REACT_APP_COPY}.netlify.app/`;
+if(process.env.REACT_APP_COPY != '0') link = `https://vesti${process.env.REACT_APP_COPY}.netlify.app/`;
 
 export default function Header() {
        const [showLinks, setShowLinks] = useState(false);
