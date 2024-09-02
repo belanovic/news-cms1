@@ -23,7 +23,7 @@ export default function Header() {
                     <a href = {`${link}`} target = "_blanc">
                         <div className="header-links-frontend-title">
                             <i className="fab fa-react"></i>
-                            <span>www.vesti.com</span>
+                            <span>{`www.vesti${process.env.REACT_APP_COPY}.netlify.app`}</span>
                         </div>
                     </a> 
                 </div>
