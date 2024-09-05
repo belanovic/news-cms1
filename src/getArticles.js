@@ -4,7 +4,7 @@ const cookies = new Cookies();
 
 function checkStatus(response) {
     if(response.status == 401) {
-        alert('YOu are not logged in');
+        alert('You are not logged in');
         const logout = () => {
             /* const removed = cookies.remove('token', {sameSite: true, secure: true}); */
             localStorage.clear()
@@ -48,7 +48,7 @@ export async function getAllArticles(category, pageNum, title, tag, selectedDate
         return responseBody.articlesMsg
     }
     catch (error) {
-        alert(error.message)
+        /* alert(error.message) */
         return null
     }
 }
@@ -253,7 +253,7 @@ export async function getFrontpageNews() {
         const responseBody = await response.json();
 
         if(responseBody.error) {
-            alert(responseBody.error.message);
+            /* alert(responseBody.error.message); */
             return null;
         }
         if(responseBody.articles) {
