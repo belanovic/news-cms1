@@ -233,10 +233,8 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                 if (IdArticleToChangePosition !== '') {
                     let changedPositionArticle = await updateArticlePosition(IdArticleToChangePosition, currentPosition);
                 }
-                
-                /* window.location.href = '/allArticles'; */
-                window.location.href = '/allArticles';
                 setShowCmsOverlay('none');
+                window.location.href = '/allArticles';
 
             } catch (error) {
                 setShowCmsOverlay('none');

@@ -57,7 +57,7 @@ export default function Order() {
                 newPosition: i + 1
             }
             return idAndPosition
-
+            
         })
         const updatedFrontpage = await updateFrontpage(idAndPositionArr);
         if(updatedFrontpage == null) {
@@ -66,8 +66,18 @@ export default function Order() {
             window.location.href = '/';
             return
         }
+
+        /* const n = await getFrontpageNews();
+        if(n == null) {
+            setShowCmsOverlay('none');
+            window.location.href = '/';
+        } */
+
+        setFrontpageNews(updatedFrontpage);
+        setreorderedArticles(updatedFrontpage);
         setRequestSent(false);
         setShowCmsOverlay('none');
+        
         /* updatedFrontpage.sort((a, b) => a.position - b.position).forEach((prom) => {
             if (prom.position > 0) console.log(prom.title)
         }) */
@@ -137,6 +147,10 @@ export default function Order() {
     }, [])
     useEffect(() => {
         if(!frontpageNews) return;
+        frontpageNews.forEach((article, i) => {
+            /* console.log(article.title);
+            console.log(article.position); */
+        })
     }, [frontpageNews])
 
     return (

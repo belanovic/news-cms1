@@ -13,11 +13,11 @@ export default function PositionPublish({ frontpageNews, setPosition,
         if (numInput > 100 || numInput < 0) return;
         setPosition(numInput);
         const articleWithSamePosition = frontpageNews.find((prom) => {
-            console.log('pozicija clanka ' + prom.position)
-            console.log('input ' + numInput)
+            /* console.log('pozicija clanka ' + prom.position)
+            console.log('input ' + numInput) */
             return prom.position === numInput
         })
-        console.log(articleWithSamePosition)
+
         if (!articleWithSamePosition) {
             setIdArticleToChangePosition('');
             return

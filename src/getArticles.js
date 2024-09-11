@@ -320,8 +320,8 @@ export async function updateFrontpage(idAndPositionArr) {
             alert(responseBody.error.message);
             return null;
         }
-        if(responseBody.modifiedAllArticles) {
-            return responseBody.modifiedAllArticles;
+        if(responseBody.frontpageArticles) {
+            return responseBody.frontpageArticles;
         }
         alert('Problem sa promenom naslovne strane')
         return null
