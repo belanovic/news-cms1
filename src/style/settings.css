@@ -57,7 +57,7 @@
     color: white;
     text-align: center;
     font-size: 2em;
-}
+} 
 
 .colors-container {
     display: flex;
@@ -243,7 +243,23 @@
 .carousel-title {
     font-size: 2rem;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+
+}
+
+.carousel-type {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+.carousel-type div {
+    margin-bottom: 15px;
+}
+.carousel-autoplay {
+    color: white;
+    font-style: italic;
+    font-size: 1.5rem;
 }
 
 /* templejt */

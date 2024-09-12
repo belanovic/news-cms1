@@ -50,8 +50,10 @@ export default function Settings() {
     const [socialColor, setSocialColor] = useState([180, '#970000', '#000000', '#ffffff']);
     const [templates, setTemplates] = useState('');
     const [carousel, setCarousel] = useState('');
+    const [autoplay, setAutoplay] = useState(true);
     const [customs, setCustoms] = useState('');
     const [activeCustom, setActiveCustom] = useState(0);
+    const [requestSent, setRequestSent] = useState(false);
 
     function generateCustomsComponents() {
         let customsArr = [];
@@ -85,11 +87,12 @@ export default function Settings() {
                     socialColor: socialColor
                 },
                 carousel: carousel,
+                autoplay: autoplay,
                 customs: customs
         }
 
         setShowCmsOverlay('flex');
-        
+        setRequestSent(true);
         const settingsMsg = await updateSettings(settings);
         if(settingsMsg == null) {
             setShowCmsOverlay('none');
@@ -110,11 +113,13 @@ export default function Settings() {
             setReadmoreColor(settingsMsg.updatedSettings.colors.readmoreColor);
             setSocialColor(settingsMsg.updatedSettings.colors.socialColor);
             setCarousel(settingsMsg.updatedSettings.carousel);
+            setAutoplay(settingsMsg.updatedSettings.autoplay);
             setCustoms(settingsMsg.updatedSettings.customs);
         }
-        setShowCmsOverlay('none');        
+        setRequestSent(false);
+        alert('Podešavanja sačuvana')
+        setShowCmsOverlay('none'); 
     }
-
 
     useEffect(() => {
         setActiveLink('settings');
@@ -137,6 +142,7 @@ export default function Settings() {
                 setReadmoreColor(settingsMsg.settings.colors.readmoreColor);
                 setSocialColor(settingsMsg.settings.colors.socialColor);
                 setCarousel(settingsMsg.settings.carousel);
+                setAutoplay(settingsMsg.settings.autoplay);
                 setCustoms(settingsMsg.settings.customs);
             }
         }
@@ -177,7 +183,7 @@ export default function Settings() {
            <button 
                 className='update-btn'
                 onClick={handleUpdate}
-           >Sačuvaj podešavanja
+           >{requestSent? 'Čuvanje...' : 'Sačuvaj podešavanja'}
            </button>
             <div className='name'>
                 <div className='name-text'>Promeni naslov sajta</div>
@@ -200,16 +206,29 @@ export default function Settings() {
                 </select>
             </div>
             <div className='carousel'>
-                <div className='carousel-title'>Izaberi vrstu centralnog karusela</div>
-                <select
-                    value = {carousel}
-                    onChange={(e) => setCarousel(e.target.value)}
+                <div className='carousel-title'>Centralni karusel</div>
+                <div className='carousel-type'>
+                    <div >Izaberi vrstu centralnog karusela</div>
+                    <select
+                        value = {carousel}
+                        onChange={(e) => setCarousel(e.target.value)}
 
-                >
-                    <option value = {'auto'}>Običan</option>
-                    <option value = {'cube'}>Kocka</option>
-                    <option value = {'coverflow'}>Efekat coverflow</option>
-                </select>
+                    >
+                        <option value = {'auto'}>Običan</option>
+                        <option value = {'cube'}>Kocka</option>
+                        <option value = {'coverflow'}>Efekat coverflow</option>
+                    </select>
+                </div>
+                <div className='carousel-autoplay'>
+                    <span>Autoplay</span>
+                    <input 
+                        type='checkbox' 
+                        checked = {autoplay}
+                        value = {autoplay} 
+                        onChange={(e) => setAutoplay(prev => !prev)}
+                    >    
+                    </input>
+                </div>
             </div>
             <div className='template'>
                 <div className='template-title'>Templejt</div>
