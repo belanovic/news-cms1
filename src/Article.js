@@ -530,7 +530,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                             currentPosition = {currentPosition}
                         />
                         <Line />
-                        <Scraper setTitle={setTitle} setSubtitle={setSubtitle} setInitialText={setInitialText} />
+                        {process.env.REACT_APP_COPY == '0'? <Scraper setTitle={setTitle} setSubtitle={setSubtitle} setInitialText={setInitialText} /> : ''}
                         <Line />
                     </div>
                 </div>
