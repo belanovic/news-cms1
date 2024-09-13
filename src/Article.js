@@ -90,6 +90,8 @@ export default function Article({ setShowCmsOverlay, isNew }) {
 
     const { id } = useParams();
     const [isNewArticle, setIsNewArticle] = useState(true);
+
+    const [requestSent, setRequestSent] = useState(false);
  
     function findNewLine() {
         const pasusi = text.split('\n')
@@ -156,6 +158,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
     async function handleSave() {
 
         setShowCmsOverlay('flex');
+        setRequestSent(true);
 
         const vest = {
             id: id,
@@ -167,7 +170,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
             subtitle: subtitle,
             note: note,
             text: text,
-            paragraphs: paragraphs,
+            paragraphs: paragraphs, 
             imgName: imgName,
             imgName2: imgName2,
             imgFilter: imgFilter,
@@ -194,10 +197,11 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                     }
                 }
                 if(imgURL2 === 'generic') {
-                    photoURL2 = 'generic'
+                    photoURL2 = 'generic' 
                 } else { 
                     photoURL2 = await uploadImageDB(imgName2, imgFile2, '');
                     if(photoURL2 == null) {
+                        setRequestSent(false);
                         setShowCmsOverlay('none');
                         return;
                     }
@@ -207,6 +211,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                     const videoURL = await uploadVideoDB(videoName, videoFile);
                     if(videoURL == null) {
                         setShowCmsOverlay('none');
+                        setRequestSent(false);
                         return;
                     }
                     vest.videoURL = videoURL;
@@ -221,6 +226,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
 
                 let deployedArticle = await postArticle(vest);
                 if(deployedArticle == null) {
+                    setRequestSent(false);
                     setShowCmsOverlay('none');
                     return;
                 }
@@ -237,6 +243,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                 window.location.href = '/allArticles';
 
             } catch (error) {
+                setRequestSent(false);
                 setShowCmsOverlay('none');
                 alert(error.message);
             }
@@ -253,6 +260,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                     } else { 
                         photoURL = await uploadImageDB(imgName, imgFile, '');
                         if(photoURL == null) {
+                            setRequestSent(false);
                             setShowCmsOverlay('none');
                             return;
                         }
@@ -276,6 +284,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                     } else { 
                         photoURL2 = await uploadImageDB(imgName2, imgFile2, '');
                         if(photoURL2 == null) {
+                            setRequestSent(false);
                             setShowCmsOverlay('none');
                             return;
                         }
@@ -294,6 +303,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                 if (deployedVideoName !== videoName) {
                     const videoURL = await uploadVideoDB(videoName, videoFile);
                     if(videoURL == null) {
+                        setRequestSent(false);
                         setShowCmsOverlay('none');
                         return;
                     }
@@ -318,11 +328,13 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                 const updateMsg = await updateArticle(vest);
 
                 if(updateMsg == null) {
+                    setRequestSent(false);
                     setShowCmsOverlay('none');
                     return 
                 }
                 if(updateMsg.isSuccess == false) {
                     alert(updateMsg.failureMsg);
+                    setRequestSent(false);
                     setShowCmsOverlay('none');
                     return 
                 }
@@ -333,7 +345,8 @@ export default function Article({ setShowCmsOverlay, isNew }) {
              /*    if(sendTwit) {
                     const r = await publishTwit(twit);
                 } */
-                alert('The article is updated')
+                alert('The article is updated');
+                setRequestSent(false);
                 setShowCmsOverlay('none');
             } catch (error) {
                 alert(error.message);
@@ -423,6 +436,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                     handleSave = {handleSave} 
                     title = {title} 
                     text = {text}
+                    requestSent = {requestSent}
                     displaySave = {'desktop'}
                 />
                 <div className="article-navigation-tabs">
@@ -528,7 +542,7 @@ export default function Article({ setShowCmsOverlay, isNew }) {
                             currentPosition = {currentPosition}
                         />
                         <Line />
-                        <Scraper setTitle={setTitle} setSubtitle={setSubtitle} setInitialText={setInitialText} />
+                        {process.env.REACT_APP_COPY == '0'? <Scraper setTitle={setTitle} setSubtitle={setSubtitle} setInitialText={setInitialText} /> : ''}
                         <Line />
                     </div>
                 </div>

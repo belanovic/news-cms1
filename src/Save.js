@@ -2,7 +2,7 @@ import react, {useContext, useState} from 'react';
 import './style/save.css';
 import {context} from './newsContext';
 
-export default function Save({handleSave, title, text, displaySave }) {
+export default function Save({handleSave, title, text, displaySave, requestSent }) {
 
     const [url, setURL] = useState('');
 
@@ -14,7 +14,7 @@ export default function Save({handleSave, title, text, displaySave }) {
                 onClick={() => {
                     handleSave();
                 }}
-            >Save
+            >{requestSent? 'Saving...' : 'Save'}
             </button>
             :
             ''}

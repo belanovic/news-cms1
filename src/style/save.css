@@ -9,10 +9,10 @@
 }
 .save-button {
     display: block;
-    width: 10rem;
+    width: 14rem;
     font-size: 1.75rem;
     letter-spacing: 1px;
-    padding: 0.2em 1.3em 0.2em 1.3em;
+    padding: 0.3em 1.5em 0.5em 1.5em;
     margin-left: 1em;
     color: white;
     background: green;
@@ -42,6 +42,6 @@
         padding-top: 1em;
     }
     .save-article.mobile .save-button {
-        margin-left: auto;
+        margin: auto;
     }
 }
