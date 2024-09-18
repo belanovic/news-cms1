@@ -9,6 +9,34 @@ import './style/custom.css';
 export default function Custom({frontpageNews, index, customs, setCustoms, active}) {
 
     const defaultSetup = {
+        border: {
+            borderTop: {
+                px: 0,
+                stil: 'solid',
+                color: '#000000'
+            },
+            borderBottom: {
+                px: 0,
+                stil: 'solid',
+                color: '#000000'
+            },
+            borderLeft: {
+                px: 0,
+                stil: 'solid',
+                color: '#000000'
+            },
+            borderRight: {
+                px: 0,
+                stil: 'solid',
+                color: '#000000'
+            },
+            borderRadius: {
+                topLeft: 0,
+                topRight: 0,
+                bottomRight: 0,
+                bottomLeft: 0
+            }
+        },
         caption: {
             text: 'Default naslov',
             size: 3,
@@ -44,6 +72,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
         } 
     }
     const [custom, setCustom] = useState('');
+    const [activeBorder, setActiveBorder] = useState('borderTop');
 
 
     function calculateFlexProperty() {
@@ -108,7 +137,9 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
     useEffect(() => {
         setCustom(customs[index]) 
         /* setCustom(defaultSetup)  */
+        
     }, [])
+
 
     useEffect(() => {
         setCustoms((prev) => {
@@ -124,10 +155,10 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                 <div className='builder'>
                     <div className='builder-body'>
                         <div
-                            className='sectionTitle'
+                            className='section sectionTitle'
                         >
-                            <div className='sectionTitle-title'>Podesi naslov sekcije</div>
-                            <div className='property'>
+                            <div className='sectionTitle-title'>Naslov sekcije</div>
+                            <div id = "site-title" className='property'>
                                 <div className='property-title'>Naslov</div>                    
                                 <input 
                                     className='property-input'
@@ -148,6 +179,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                     onChange={(e)=> setCustom((prev) => {
                                         prev.caption.color = e.target.value;
                                         return {...prev}
+                                        
                                     }) }
                                 ></input>
                             </div>
@@ -155,12 +187,13 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                 <div className='property-title'>Boja pozadine naslova</div>                     
                                 <input 
                                     className='property-input'
-                                    type='color'                        
+                                    type='color'
                                     value = {custom.caption.background}
                                     onChange={(e)=> setCustom((prev) => {
                                         
                                         prev.caption.background = e.target.value;
                                         return {...prev}
+                                        
                                     }) }
                                 ></input>
                             </div>
@@ -193,9 +226,25 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                     <option value = 'right'>Desno</option>
                                 </select>
                             </div>
+                            <button className= 'defaultBtn' onClick={(e) => {
+                                if(window.confirm('Da li ste sigurni da želite default podešavanje naslova sekcije?')) {
+                                    setCustom((prev) => {
+                                        prev.caption.text = defaultSetup.caption.text;
+                                        prev.caption.color = defaultSetup.caption.color;
+                                        prev.caption.background = defaultSetup.caption.background;
+                                        prev.caption.size = defaultSetup.caption.size;
+                                        prev.caption.align = defaultSetup.caption.align;
+                                        return {...prev}
+                                    })
+                                }
+                                return
+                                
+                            }}
+                            >Default
+                            </button>
                         </div>
-                        <div className='sectionBody'>
-                            <div className='sectionBody-title'>Podesi telo sekcije</div>
+                        <div className='section sectionBody'>
+                            <div className='sectionBody-title'>Telo sekcije</div>
                             <div
                                 className='property'
                             >
@@ -267,8 +316,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                 <input 
                                     className='property-input'
                                     type='color'
-                                    min={1}
-                                    max={frontpageNews.length}
+                               
                                     value = {custom.body.background}
                                     onChange={(e)=> setCustom((prev) => {
                                         prev.body.background = e.target.value;
@@ -276,11 +324,386 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                     }) }
                                 ></input>
                             </div>
+                            <button className= 'defaultBtn' onClick={(e) => {
+                                if(window.confirm('Da li ste sigurni da želite default podešavanje tela sekcije?')) {
+                                    setCustom((prev) => {
+                                        prev.body.background = defaultSetup.body.background;
+                                        prev.body.firstArticlePosition = defaultSetup.body.firstArticlePosition;
+                                        prev.body.count = defaultSetup.body.count;
+                                        prev.body.paddingTop = defaultSetup.body.paddingTop;
+                                        prev.body.paddingSides = defaultSetup.body.paddingSides;
+                                        return {...prev}
+                                    })
+                                }
+                                return
+
+                            }}
+                            >Default
+                            </button>
+                        </div>
+                       
+                        <div
+                            className='section sectionBorder'
+                        >
+
+                            <div className='sectionTitle-title'>Border sekcije</div>
+                                <div className='borderNavigation'>
+                                    <div className = "borderTab" onClick = {(e) => {setActiveBorder('borderTop')}}>
+                                        <label >Top</label>
+                                        <input type='radio' name='border' value={activeBorder} onChange={(e) => {setActiveBorder('borderTop')}} checked = {activeBorder == 'borderTop'}></input>
+                                    </div>
+                                    <div className = "borderTab"  onClick = {(e) => {setActiveBorder('borderBottom')}}>
+                                        <label>Bottom</label>
+                                        <input type='radio' name='border' value={activeBorder} onChange={(e) => {setActiveBorder('borderBottom')}} checked = {activeBorder == 'borderBottom'}></input>
+                                    </div>
+                                    <div className = "borderTab" onClick = {(e) => {setActiveBorder('borderLeft')}}>
+                                        <label >Left</label>                            
+                                        <input type='radio' name='border' value={activeBorder} onChange={(e) => {setActiveBorder('borderLeft')}} checked = {activeBorder == 'borderLeft'}></input>
+                                    </div>
+                                    <div className = "borderTab" onClick = {(e) => {setActiveBorder('borderRight')}}>
+                                        <label >Right</label>
+                                        <input type='radio' name='border' value={activeBorder} onChange={(e) => {setActiveBorder('borderRight')}} checked = {activeBorder == 'borderRight'}></input>
+                                    </div>
+                                </div>
+                                {activeBorder == 'borderTop' && <div className='borderTop'>
+                                    <div className='property'> 
+                                        <div className='property-title'>Širina u pikselima</div>                    
+                                        <input 
+                                            className='property-input'
+                                            type='number'
+                                            min = {1}                    
+                                            max = {100}                    
+                                            value = {custom.border.borderTop.px}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderTop.px = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <div className='property'> 
+                                        <div className='property-title'>Stil</div>                    
+                                        <select 
+                                            className='property-input'                                        
+                                            value = {custom.border.borderTop.stil}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderTop.stil = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        >
+                                            <option value = 'solid'>solid</option>
+                                            <option value = 'dashed'>dashed</option>
+                                            <option value = 'dotted'>dotted</option>
+                                            <option value = 'double'>double</option>
+                                            <option value = 'groove'>groove</option>
+                                            <option value = 'ridge'>ridge</option>
+                                            <option value = 'outset'>outset</option>
+                                            <option value = 'none'>none</option>
+                                            <option value = 'hidden'>hidden</option>
+                                        </select>
+                                    </div>
+                                    <div className='property'>
+                                        <div className='property-title'>Boja</div>                     
+                                        <input 
+                                            className='property-input'
+                                            type='color'                        
+                                            value = {custom.border.borderTop.color}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                
+                                                prev.border.borderTop.color = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <button className= 'defaultBtn' onClick={(e) => {
+                                        if(window.confirm('Da li ste sigurni da želite default podešavanje top bordera?')) {
+                                            setCustom((prev) => {
+                                                prev.border.borderTop.px = defaultSetup.border.borderTop.px;
+                                                prev.border.borderTop.stil = defaultSetup.border.borderTop.stil;
+                                                prev.border.borderTop.color = defaultSetup.border.borderTop.color;
+                                                return {...prev}
+                                            })
+                                        }
+                                        return
+                                    }}
+                                    >Default
+                                    </button>
+                                </div>}
+                                {activeBorder == 'borderBottom' && <div className='borderBottom'>
+                                    <div className='property'> 
+                                        <div className='property-title'>Širina u pikselima</div>                    
+                                        <input 
+                                            className='property-input'
+                                            type='number'
+                                            min = {1}                    
+                                            max = {100}                    
+                                            value = {custom.border.borderBottom.px}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderBottom.px = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <div className='property'> 
+                                        <div className='property-title'>Stil</div>                    
+                                        <select 
+                                            className='property-input'                                        
+                                            value = {custom.border.borderBottom.stil}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderBottom.stil = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        >
+                                            <option value = 'solid'>solid</option>
+                                            <option value = 'dashed'>dashed</option>
+                                            <option value = 'dotted'>dotted</option>
+                                            <option value = 'double'>double</option>
+                                            <option value = 'groove'>groove</option>
+                                            <option value = 'ridge'>ridge</option>
+                                            <option value = 'outset'>outset</option>
+                                            <option value = 'none'>none</option>
+                                            <option value = 'hidden'>hidden</option>
+                                        </select>
+                                    </div>
+                                    <div className='property'>
+                                        <div className='property-title'>Boja</div>                     
+                                        <input 
+                                            className='property-input'
+                                            type='color'                        
+                                            value = {custom.border.borderBottom.color}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                
+                                                prev.border.borderBottom.color = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <button className= 'defaultBtn' onClick={(e) => {
+                                        if(window.confirm('Da li ste sigurni da želite default podešavanje bottom bordera?')) {
+                                            setCustom((prev) => {
+                                                prev.border.borderBottom.px = defaultSetup.border.borderBottom.px;
+                                                prev.border.borderBottom.stil = defaultSetup.border.borderBottom.stil;
+                                                prev.border.borderBottom.color = defaultSetup.border.borderBottom.color;
+                                                return {...prev}
+                                            })
+                                        }
+                                        return
+                                    }}
+                                    >Default
+                                    </button>
+                                </div>}
+                                {activeBorder == 'borderLeft' && <div className='borderLeft'>
+                                    <div className='property'> 
+                                        <div className='property-title'>Širina u pikselima</div>                    
+                                        <input 
+                                            className='property-input'
+                                            type='number'
+                                            min = {1}                    
+                                            max = {100}                    
+                                            value = {custom.border.borderLeft.px}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderLeft.px = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <div className='property'> 
+                                        <div className='property-title'>Stil</div>                    
+                                        <select 
+                                            className='property-input'                                        
+                                            value = {custom.border.borderLeft.stil}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderLeft.stil = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        >
+                                            <option value = 'solid'>solid</option>
+                                            <option value = 'dashed'>dashed</option>
+                                            <option value = 'dotted'>dotted</option>
+                                            <option value = 'double'>double</option>
+                                            <option value = 'groove'>groove</option>
+                                            <option value = 'ridge'>ridge</option>
+                                            <option value = 'outset'>outset</option>
+                                            <option value = 'none'>none</option>
+                                            <option value = 'hidden'>hidden</option>
+                                        </select>
+                                    </div>
+                                    <div className='property'>
+                                        <div className='property-title'>Boja</div>                     
+                                        <input 
+                                            className='property-input'
+                                            type='color'                        
+                                            value = {custom.border.borderLeft.color}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                
+                                                prev.border.borderLeft.color = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <button className= 'defaultBtn' onClick={(e) => {
+                                        if(window.confirm('Da li ste sigurni da želite default podešavanje left bordera?')) {
+                                            setCustom((prev) => {
+                                                prev.border.borderLeft.px = defaultSetup.border.borderLeft.px;
+                                                prev.border.borderLeft.stil = defaultSetup.border.borderLeft.stil;
+                                                prev.border.borderLeft.color = defaultSetup.border.borderLeft.color;
+                                                return {...prev}
+                                            })
+                                        }
+                                        return
+                                    }}
+                                    >Default
+                                    </button>
+                                </div>}
+                                {activeBorder == 'borderRight' && <div className='borderRight'>
+                                    <div className='property'> 
+                                        <div className='property-title'>Širina u pikselima</div>                    
+                                        <input 
+                                            className='property-input'
+                                            type='number'
+                                            min = {1}                    
+                                            max = {100}                    
+                                            value = {custom.border.borderRight.px}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderRight.px = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <div className='property'> 
+                                        <div className='property-title'>Stil</div>                    
+                                        <select 
+                                            className='property-input'                                        
+                                            value = {custom.border.borderRight.stil}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                prev.border.borderRight.stil = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        >
+                                            <option value = 'solid'>solid</option>
+                                            <option value = 'dashed'>dashed</option>
+                                            <option value = 'dotted'>dotted</option>
+                                            <option value = 'double'>double</option>
+                                            <option value = 'groove'>groove</option>
+                                            <option value = 'ridge'>ridge</option>
+                                            <option value = 'outset'>outset</option>
+                                            <option value = 'none'>none</option>
+                                            <option value = 'hidden'>hidden</option>
+                                        </select>
+                                    </div>
+                                    <div className='property'>
+                                        <div className='property-title'>Boja</div>                     
+                                        <input 
+                                            className='property-input'
+                                            type='color'                        
+                                            value = {custom.border.borderRight.color}
+                                            onChange={(e)=> setCustom((prev) => {
+                                                
+                                                prev.border.borderRight.color = e.target.value;
+                                                return {...prev}
+                                            }) }
+                                        ></input>
+                                    </div>
+                                    <button className= 'defaultBtn' onClick={(e) => {
+                                        if(window.confirm('Da li ste sigurni da želite default podešavanje right bordera?')) {
+                                            setCustom((prev) => {
+                                                prev.border.borderRight.px = defaultSetup.border.borderRight.px;
+                                                prev.border.borderRight.stil = defaultSetup.border.borderRight.stil;
+                                                prev.border.borderRight.color = defaultSetup.border.borderRight.color;
+                                                return {...prev}
+                                            })
+                                        }
+                                        return
+                                    }}
+                                    >Default
+                                    </button>
+                                </div>
+                                }
+                        </div>
+                        <div className='section sectionBorderRadius'>
+                            <div className='sectionTitle-title'>Border radijus (%)</div>
+                            <div
+                                className='property'
+                            >
+                                <div className='property-title'>Gore levo</div>
+                                <input 
+                                    className='property-input'
+                                    type='number'
+                                    min={0}
+                                    max={100}
+                                    value = {custom.border.borderRadius.topLeft}
+                                    onChange={(e)=> setCustom((prev) => {
+                                        prev.border.borderRadius.topLeft = e.target.value;
+                                        return {...prev}
+                                    }) }
+                                ></input>
+                            </div> 
+                            <div
+                                className='property'
+                            >
+                                <div className='property-title'>Gore desno</div>
+                                <input 
+                                    className='property-input'
+                                    type='number'
+                                    min={0}
+                                    max={100}
+                                    value = {custom.border.borderRadius.topRight}
+                                    onChange={(e)=> setCustom((prev) => {
+                                        prev.border.borderRadius.topRight = e.target.value;
+                                        return {...prev}
+                                    }) }
+                                ></input>
+                            </div> 
+                            <div
+                                className='property'
+                            >
+                                <div className='property-title'>Dole desno</div>
+                                <input 
+                                    className='property-input'
+                                    type='number'
+                                    min={0}
+                                    max={100}
+                                    value = {custom.border.borderRadius.bottomRight}
+                                    onChange={(e)=> setCustom((prev) => {
+                                        prev.border.borderRadius.bottomRight = e.target.value;
+                                        return {...prev}
+                                    }) }
+                                ></input>
+                            </div> 
+                            <div
+                                className='property'
+                            >
+                                <div className='property-title'>Dole levo</div>
+                                <input 
+                                    className='property-input'
+                                    type='number'
+                                    min={0}
+                                    max={100}
+                                    value = {custom.border.borderRadius.bottomLeft}
+                                    onChange={(e)=> setCustom((prev) => {
+                                        prev.border.borderRadius.bottomLeft = e.target.value;
+                                        return {...prev}
+                                    }) }
+                                ></input>
+                            </div>
+                            <button className= 'defaultBtn' onClick={(e) => {
+                                if(window.confirm('Da li ste sigurni da želite default podešavanje border radijusa?')) {
+                                    setCustom((prev) => {
+                                        prev.border.borderRadius.topLeft = defaultSetup.border.borderRadius.topLeft;
+                                        prev.border.borderRadius.topRight = defaultSetup.border.borderRadius.topRight;
+                                        prev.border.borderRadius.bottomRight = defaultSetup.border.borderRadius.bottomRight;
+                                        prev.border.borderRadius.bottomLeft = defaultSetup.border.borderRadius.bottomLeft;
+                                        return {...prev}
+                                    })
+                                }
+                                return
+                            }}
+                            >Default
+                            </button>
                         </div>
                         <div
-                            className='sectionArticle'
+                            className='section sectionArticle'
                         >
-                            <div className='sectionArticle-title'>Podesi izgled članka</div>
+                            <div className='sectionArticle-title'>Izgled članka</div>
                             <div className='property'>
                                 <div className='property-title'>Boja naslova</div>                    
                                 <input 
@@ -394,7 +817,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                 ></input>
                             </div>                           
                             <div className='property'>
-                                <div className='property-title'>Boja pozadine dugmeta Pročitaj</div>                    
+                                <div className='property-title'>Boja pozadine Pročitaj</div>                    
                                 <input 
                                     className='property-input'
                                     type='color'                        
@@ -404,17 +827,53 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                         return {...prev}
                                     }) }
                                 ></input>
-                            </div>                           
+                            </div>   
+                            <button className= 'defaultBtn' onClick={(e) => {
+                                if(window.confirm('Da li ste sigurni da želite default podešavanje izgleda članka?')) {
+                                    setCustom((prev) => {
+                                        prev.article.title.color = defaultSetup.article.title.color;
+                                        prev.article.supertitle.background[1] = defaultSetup.article.supertitle.background[1];
+                                        prev.article.supertitle.background[2] = defaultSetup.article.supertitle.background[2];
+                                        prev.article.supertitle.deg = defaultSetup.article.supertitle.deg;
+                                        prev.article.supertitle.color = defaultSetup.article.supertitle.color ;
+                                        prev.article.subtitle.show = defaultSetup.article.subtitle.show;
+                                        prev.article.subtitle.color = defaultSetup.article.subtitle.color;
+                                        prev.article.readMore.show = defaultSetup.article.readMore.show ;
+                                        prev.article.readMore.color = defaultSetup.article.readMore.color ;
+                                        prev.article.readMore.background = defaultSetup.article.readMore.background;
+
+                                        return {...prev}
+                                    })
+                                }
+                                return
+                            }}
+                            >Default
+                            </button>                  
                         </div>
                     </div>
                 </div>
                 <button 
                     className='custom-default'
-                    onClick={(e) => setCustom(defaultSetup)}
-                >Default
+                    onClick={(e) => {
+                        
+                        if(window.confirm(`Da li ste sigurni da želite default podešavanje cele sekcije custom${index}`)) {
+                            setCustom(defaultSetup);
+                        }
+                        return
+                    }}
+                >Default <strong>custom{index}</strong>
                 </button>
         
-                <div className='custom-preview'>
+                <div 
+                    className='custom-preview'
+                    style={{
+                        borderTop: `${custom.border.borderTop.px}px ${custom.border.borderTop.stil} ${custom.border.borderTop.color}`,
+                        borderBottom: `${custom.border.borderBottom.px}px ${custom.border.borderBottom.stil} ${custom.border.borderBottom.color}`,
+                        borderLeft: `${custom.border.borderLeft.px}px ${custom.border.borderLeft.stil} ${custom.border.borderLeft.color}`,
+                        borderRight: `${custom.border.borderRight.px}px ${custom.border.borderRight.stil} ${custom.border.borderRight.color}`,
+                        borderRadius: `${custom.border.borderRadius.topLeft}% ${custom.border.borderRadius.topRight}% ${custom.border.borderRadius.bottomLeft}% ${custom.border.borderRadius.bottomRight}%`
+                    }}
+                >
                     <div 
                         className='custom-title'
                         style={{
