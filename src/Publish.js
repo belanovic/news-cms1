@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import {publishArticle, getAllArticles} from './getArticles.js';
 import { context } from './newsContext';
 
-export default function Publish({ id, published, pageArticles, title, tag, selectedDate }) {
+export default function Publish({ id, published, position, pageArticles, title, tag, selectedDate }) {
     const {category, pageNum, showCmsOverlay, setShowCmsOverlay } = useContext(context);
     async function handleClick(e) {
        try {
@@ -20,10 +20,19 @@ export default function Publish({ id, published, pageArticles, title, tag, selec
 
     return (
         <div className="allArticles-item-publish allArticles-item-part">
+            {published?
+            <div>
+                <div>Published</div>
+                <div>{position}</div>
+            </div>
+            :
             <button 
                 onClick = {handleClick}
-                style = {{display: !published? 'block' : 'none' }}
-            >Objavi</button>
+                /* style = {{display: !published? 'block' : 'none' }} */
+            >Objavi
+            </button>
+
+            }
         </div>
     )
 }

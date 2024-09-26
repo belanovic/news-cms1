@@ -152,9 +152,10 @@ export default function AllArticles() {
                                             timePublished = {oneArticle.datePublished} 
                                             published = {oneArticle.published}
                                         />
-                                        <Publish 
+                                        <Publish  
                                             id={oneArticle._id} 
-                                            published = {oneArticle.published} 
+                                            published = {oneArticle.published}
+                                            position = {oneArticle.position}
                                             pageArticles = {pageArticles} 
                                             title = {title}
                                             tag = {tag}

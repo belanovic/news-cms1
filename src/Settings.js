@@ -237,8 +237,11 @@ export default function Settings() {
                         className={`option ${templates.type == 'default'? 'active' : ''}`}
                         onClick={() => setTemplates((prev) => {
                             prev.type = 'default';
-                            prev.sectionsMain = ['central', 'space', 'velike vesti', 'space', 'male vesti', 'space', 
-                            'mreze', 'space', 'line', 'preporucujemo', 'line', 'magazin', 'line', 'sport'];
+                            prev.sectionsMain = ['central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','magazin','line','custom7',
+                            'line','ads3','line','sport','line','custom9','line',
+                            'custom4','custom5','custom6','line'];
                             return {...prev}
                         })}
                     >
@@ -297,6 +300,7 @@ export default function Settings() {
                         })}}
                     ></textarea>
                 </div>
+
             </div>
             <div className='colors'>
                 <div className='colors-title'>Boje</div>

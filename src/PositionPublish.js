@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style/position-publish.css';
 
 export default function PositionPublish({ frontpageNews, setPosition, 
@@ -10,6 +10,9 @@ export default function PositionPublish({ frontpageNews, setPosition,
             return
         }
         const numInput = parseInt(e.target.value);
+
+        if(Number.isNaN(numInput)) return;
+        
         if (numInput > 100 || numInput < 0) return;
         setPosition(numInput);
         const articleWithSamePosition = frontpageNews.find((prom) => {
@@ -32,6 +35,10 @@ export default function PositionPublish({ frontpageNews, setPosition,
             setPosition(0)
         }
     }
+    
+/*     useEffect(() => {
+        if(position == '') setPosition(0);
+    }, [position])  */
 
     return (
         <div className="position-publish">
