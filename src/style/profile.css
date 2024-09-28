@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     background: rgb(32, 32, 32);
+    background: rgb(49, 49, 49);
     box-shadow: 10px 10px 15px 0px rgb(63, 63, 63);
     padding: 1.5em;
     /* border: 3px solid black; */
@@ -28,6 +29,8 @@
     text-align: center;
     width: 299px;
 }
+
+
 
 .profile-element {
     display: flex;

@@ -299,16 +299,16 @@ export default function Form() {
                                     className="paswordSignIn-input" 
                                     type="text" 
                                     value = {passwordSignIn}
-                                    onChange = {(e) => handleChange(e, setPasswordSignIn, 6)}
+                                    onChange = {(e) => handleChange(e, setPasswordSignIn, 5)}
                                 ></input>
                 
                                 <div className = "form-element-condition passwordSignIn">
                                     {/* <span 
                                         style = {{
-                                            visibility: passwordSignIn.length >= 6 || passwordSignIn.length === 0 ? 
+                                            visibility: passwordSignIn.length >= 5 || passwordSignIn.length === 0 ? 
                                                 'hidden' : 'visible'
                                             }}
-                                    >Šifra mora imati najmanje 6 karaktera</span> */}
+                                    >Šifra mora imati najmanje 5 karaktera</span> */}
                                 </div>
                             </div>
                             <div 
@@ -321,16 +321,16 @@ export default function Form() {
                                     className="paswordSignUp-input" 
                                     type="text" 
                                     value = {passwordSignUp}
-                                    onChange = {(e) => handleChange(e, setPasswordSignUp, 6)}
+                                    onChange = {(e) => handleChange(e, setPasswordSignUp, 5)}
                                 ></input>
 
                                 <div className = "form-element-condition passwordSignUp">
                                     <span 
                                         style = {{
-                                            visibility: passwordSignUp.length >= 6 || passwordSignUp.length === 0 ? 
+                                            visibility: passwordSignUp.length >= 5 || passwordSignUp.length === 0 ? 
                                                 'hidden' : 'visible'
                                             }}
-                                    >Šifra mora imati najmanje 6 karaktera</span>
+                                    >Šifra mora imati najmanje 5 karaktera</span>
                                 </div>
                             </div>
 
