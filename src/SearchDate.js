@@ -64,7 +64,6 @@ export default function SearchDate({ reorderedArticles, setreorderedArticles, i,
     const handleSelectArticle = (e) => {
         setDoubleSelectedArticle('');
         const value = e.target.value;
-        console.log(value)
         setSelectedArticle(value);
     }
 
@@ -82,6 +81,7 @@ export default function SearchDate({ reorderedArticles, setreorderedArticles, i,
             reorderedArticles.forEach((oneReorderedArticle,i) => {
                 if (oneReorderedArticle._id === newsByDate[selectedArticle]._id) {
                     setDoubleSelectedArticle(i);
+                    alert('Vest je već na naslovnoj strani')
                 }
             })
             return

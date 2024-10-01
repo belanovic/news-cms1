@@ -52,6 +52,10 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
             background: '#000000'
         },
         article: {
+            background: {
+                color: 'none',
+                isActive: false
+            },
             title: {
                 color: '#ffffff'
             },
@@ -82,7 +86,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
         if((custom.body.count > 5) && (custom.body.count < 11)) {
             return `0 0 ${200 / custom.body.count - 1}%`
         }
-        if((custom.body.count > 10) && (custom.body.count < 16)) {
+        if((custom.body.count > 10) && (custom.body.count < 15)) {
             return `0 0 ${300 / custom.body.count - 1}%`
         }
     }
@@ -136,20 +140,33 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
 
     useEffect(() => {
         setCustom(customs[index]) 
+    
+        /* if(index > 9) {
+            setCustom(defaultSetup)
+        } */
         /* setCustom(defaultSetup)  */
+       
         
     }, [])
 
 
     useEffect(() => {
+        console.log(parseInt(active) == parseInt(index))
         setCustoms((prev) => {
             prev[index] = custom;
+           /*  console.log(prev[index]);
+            if(prev[index]) {
+                prev[index].article.background = {
+                    color: 'none',
+                    isActive: false
+                };
+            } */
             return prev
         })
     }, [custom])
 
 
-    return (custom && (active == index) &&
+    return (custom && (parseInt(active) == parseInt(index)) &&
         <div className= 'custom' >
             <div className='custom-body'>
                 <div className='builder'>
@@ -705,6 +722,32 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                         >
                             <div className='sectionArticle-title'>Izgled članka</div>
                             <div className='property'>
+                                <div className='property-title'>
+                                    <span>Boja pozadine članka</span>
+                                    <input 
+                                        type='checkbox' 
+                                        checked = {custom.article.background.isActive}
+                                        value = {custom.article.background.isActive} 
+                                        onChange={(e)=> setCustom((prev) => {
+                                            prev.article.background.isActive = !prev.article.background.isActive;
+                                            return {...prev}
+                                    }) }
+                                    >    
+                                    </input>
+                                </div>        
+                                
+                                <input 
+                                    className='property-input'
+                                    style={{visibility: custom.article.background.isActive? 'visible' : 'hidden'}}
+                                    type='color' 
+                                    value = {custom.article.background.color}
+                                    onChange={(e)=> setCustom((prev) => {
+                                        prev.article.background.color = e.target.value;
+                                        return {...prev}
+                                    }) }
+                                ></input>
+                            </div>
+                            <div className='property'>
                                 <div className='property-title'>Boja naslova</div>                    
                                 <input 
                                     className='property-input'
@@ -907,6 +950,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                 flex: calculateFlexProperty(),
                                 position: 'relative',
                                 display: custom.body.count == 1? 'flex' : 'block',
+                                background: custom.article.background.isActive? custom.article.background.color : 'none',
                                 marginBottom: /* (i == custom.body.firstArticlePosition - 1) && custom.body.count > 5?  */'3em'
                             }}
                         >
@@ -975,7 +1019,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                                 className={`card-custom-text`}
                                 style={{
                                     width: '100%',
-                                    padding: custom.body.count == 1?'1em 1em 1em 2em' : '1em 1em 1em 0em',
+                                    padding: custom.body.count == 1? '1em 1em 1em 2em' : (custom.article.background.isActive? `1.5em 1.5em 1.5em 1.5em` : `1em 1em 1em 0em` )  ,
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center'

@@ -58,7 +58,7 @@ export default function Settings() {
     function generateCustomsComponents() {
         let customsArr = [];
 
-        for(let i = 0; i < 10; i++) {
+        for(let i = 0; i < 15; i++) {
             customsArr.push(<Custom 
                                 key = {i} 
                                 index = {i} 
@@ -177,6 +177,9 @@ export default function Settings() {
         }
         f()
     }, [])
+    useEffect( () => {
+        console.log(activeCustom)
+    }, [activeCustom])
 
     return (
         <div className="settings">
@@ -226,12 +229,12 @@ export default function Settings() {
                         checked = {autoplay}
                         value = {autoplay} 
                         onChange={(e) => setAutoplay(prev => !prev)}
-                    >    
+                    > 
                     </input>
                 </div>
             </div>
             <div className='template'>
-                <div className='template-title'>Templejt</div>
+                <div className='template-title'>Selektuj templejt</div>
                 <div className='template-options'>
                     <div 
                         className={`option ${templates.type == 'default'? 'active' : ''}`}
@@ -256,12 +259,15 @@ export default function Settings() {
                         className={`option ${templates.type == 'magazin'? 'active' : ''}`}
                         onClick={() => setTemplates((prev) => {
                             prev.type = 'magazin';
-                            prev.sectionsMain = ['magazin', 'space', 'mreze', 'space', 'line', 'preporucujemo', 
-                                        'line', 'central', 'velike vesti', 'space', 'male vesti', 'space', 'line', 'sport', 'space'];
+                            prev.sectionsMain = ['magazin','line','central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','custom7',
+                            'line','ads3','line','sport','line','custom9','line',
+                            'custom4','custom5','custom6','line'];
                             return {...prev}
                         })}
                     >
-                        <div className='label'>1.</div>
+                        <div className='label'>Magazin</div>
                         <ol>
                             <li>Magazin</li>
                             <li>Vesti</li>
@@ -272,12 +278,15 @@ export default function Settings() {
                         className={`option ${templates.type == 'sport'? 'active' : ''}`}
                         onClick={() => setTemplates((prev) => {
                             prev.type = 'sport';
-                            prev.sectionsMain = ['sport', 'space', 'mreze', 'space', 'line', 'preporucujemo', 
-                            'line', 'central', 'velike vesti', 'space', 'male vesti', 'space', 'line', 'magazin', 'space'];
+                            prev.sectionsMain = ['sport','line','custom9','line',
+                            'custom4','custom5','custom6','line','central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','magazin','line','custom7',
+                            'line','ads3','line'];
                             return {...prev}
                         })}
                     >
-                        <div className='label'>2.</div>
+                        <div className='label'>Sport</div>
                         <ol>
                             <li>Sport</li>
                             <li>Vesti</li>
@@ -286,7 +295,7 @@ export default function Settings() {
                     </div>
                 </div>
                 <div className={`custom-template ${templates.type == 'custom'? 'active' : ''}`}>
-                    <div className='custom-template-title'>Custom template</div>
+                    <div className='custom-template-title'>Custom</div>
                     <textarea 
                         className='custom-template-input'
                         value = {templates.sectionsMain}
@@ -547,6 +556,11 @@ export default function Settings() {
                         <option value = {7}>custom 7</option>
                         <option value = {8}>custom 8</option>
                         <option value = {9}>custom 9</option>
+                        <option value = {10}>custom 10</option>
+                        <option value = {11}>custom 11</option>
+                        <option value = {12}>custom 12</option>
+                        <option value = {13}>custom 13</option>
+                        <option value = {14}>custom 14</option>
                     </select>
                 </div>
                 {customs && generateCustomsComponents()}
