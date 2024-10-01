@@ -312,13 +312,13 @@ export default function Settings() {
 
             </div>
             <div className='colors'>
-                <div className='colors-title'>Boje</div>
+                <div className='colors-title'>Boje delova sajta</div>
                 <div className='colors-container'>
 
                     <div
                         className='sitecolor colors-item'
                     >
-                        <div className='sitecolor-title'>Heder</div>
+                        <div className='sitecolor-title'>Heder sajta</div>
                         <div className='sitecolor-title-bkg'>Boja pozadine</div>                        
                         <div className='sitecolor-pickers'> 
                     
@@ -372,7 +372,7 @@ export default function Settings() {
                     <div
                         className='supertitleColor colors-item'
                     >
-                        <div className='supertitleColor-title'>Nadnaslov</div>
+                        <div className='supertitleColor-title'>Nadnaslov članka</div>
                         <div className='supertitleColor-title-bkg'>Boja pozadine</div>
                         <div className='supertitleColor-pickers'> 
                         
@@ -482,7 +482,7 @@ export default function Settings() {
                     <div
                         className='socialColor colors-item'
                     >
-                        <div className='socialColor-title'>Društvene mreže</div>
+                        <div className='socialColor-title'>Sekcija Društvene mreže</div>
                         <div className='socialColor-title-bkg'>Boja pozadine</div>
                         <div className='socialColor-pickers'> 
                         
