@@ -54,6 +54,7 @@ export default function Settings() {
     const [customs, setCustoms] = useState('');
     const [activeCustom, setActiveCustom] = useState(0);
     const [requestSent, setRequestSent] = useState(false);
+    const [showTemplateManual, setShowTemplateManual] = useState(false)
 
     function generateCustomsComponents() {
         let customsArr = [];
@@ -233,84 +234,7 @@ export default function Settings() {
                     </input>
                 </div>
             </div>
-            <div className='template'>
-                <div className='template-title'>Selektuj templejt</div>
-                <div className='template-options'>
-                    <div 
-                        className={`option ${templates.type == 'default'? 'active' : ''}`}
-                        onClick={() => setTemplates((prev) => {
-                            prev.type = 'default';
-                            prev.sectionsMain = ['central','space','velike vesti','space','male vesti','line','ads5','line',
-                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
-                            'custom0','line','ads5','line','magazin','line','custom7',
-                            'line','ads3','line','sport','line','custom9','line',
-                            'custom4','custom5','custom6','line'];
-                            return {...prev}
-                        })}
-                    >
-                        <div className='label'>Default</div>
-                        <ol>
-                            <li>Vesti</li>
-                            <li>Magazin</li>
-                            <li>Sport</li>
-                        </ol>
-                    </div>
-                    <div 
-                        className={`option ${templates.type == 'magazin'? 'active' : ''}`}
-                        onClick={() => setTemplates((prev) => {
-                            prev.type = 'magazin';
-                            prev.sectionsMain = ['magazin','line','central','space','velike vesti','space','male vesti','line','ads5','line',
-                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
-                            'custom0','line','ads5','line','custom7',
-                            'line','ads3','line','sport','line','custom9','line',
-                            'custom4','custom5','custom6','line'];
-                            return {...prev}
-                        })}
-                    >
-                        <div className='label'>Magazin</div>
-                        <ol>
-                            <li>Magazin</li>
-                            <li>Vesti</li>
-                            <li>Sport</li>
-                        </ol>
-                    </div>
-                    <div 
-                        className={`option ${templates.type == 'sport'? 'active' : ''}`}
-                        onClick={() => setTemplates((prev) => {
-                            prev.type = 'sport';
-                            prev.sectionsMain = ['sport','line','custom9','line',
-                            'custom4','custom5','custom6','line','central','space','velike vesti','space','male vesti','line','ads5','line',
-                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
-                            'custom0','line','ads5','line','magazin','line','custom7',
-                            'line','ads3','line'];
-                            return {...prev}
-                        })}
-                    >
-                        <div className='label'>Sport</div>
-                        <ol>
-                            <li>Sport</li>
-                            <li>Vesti</li>
-                            <li>Magazin</li>
-                        </ol>
-                    </div>
-                </div>
-                <div className={`custom-template ${templates.type == 'custom'? 'active' : ''}`}>
-                    <div className='custom-template-title'>Custom</div>
-                    <textarea 
-                        className='custom-template-input'
-                        value = {templates.sectionsMain}
-                        onClick={() => setTemplates((prev) => {
-                            prev.type = 'custom';
-                            return {...prev};
-                        })}
-                        onChange = {(e) => {setTemplates((prev) => {
-                            prev.sectionsMain = e.target.value.split(',');
-                            return {...prev}
-                        })}}
-                    ></textarea>
-                </div>
-
-            </div>
+  
             <div className='colors'>
                 <div className='colors-title'>Boje delova sajta</div>
                 <div className='colors-container'>
@@ -536,6 +460,104 @@ export default function Settings() {
                     </div>
                 </div>
                 
+            </div>
+            <div className='template'>
+                <div className='template-title'>Selektuj templejt</div>
+                <div className='template-options'>
+                    <div 
+                        className={`option ${templates.type == 'default'? 'active' : ''}`}
+                        onClick={() => setTemplates((prev) => {
+                            prev.type = 'default';
+                            prev.sectionsMain = ['central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','magazin','line','custom7',
+                            'line','ads3','line','sport','line','custom9','line',
+                            'custom4','custom5','custom6','line'];
+                            return {...prev}
+                        })}
+                    >
+                        <div className='label'>Default</div>
+                        <ol>
+                            <li>Vesti</li>
+                            <li>Magazin</li>
+                            <li>Sport</li>
+                        </ol>
+                    </div>
+                    <div 
+                        className={`option ${templates.type == 'magazin'? 'active' : ''}`}
+                        onClick={() => setTemplates((prev) => {
+                            prev.type = 'magazin';
+                            prev.sectionsMain = ['magazin','line','central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','custom7',
+                            'line','ads3','line','sport','line','custom9','line',
+                            'custom4','custom5','custom6','line'];
+                            return {...prev}
+                        })}
+                    >
+                        <div className='label'>Magazin</div>
+                        <ol>
+                            <li>Magazin</li>
+                            <li>Vesti</li>
+                            <li>Sport</li>
+                        </ol>
+                    </div>
+                    <div 
+                        className={`option ${templates.type == 'sport'? 'active' : ''}`}
+                        onClick={() => setTemplates((prev) => {
+                            prev.type = 'sport';
+                            prev.sectionsMain = ['sport','line','custom9','line',
+                            'custom4','custom5','custom6','line','central','space','velike vesti','space','male vesti','line','ads5','line',
+                            'custom1','custom2','custom3','space','mreze','space','custom8','space','preporucujemo','line',
+                            'custom0','line','ads5','line','magazin','line','custom7',
+                            'line','ads3','line'];
+                            return {...prev}
+                        })}
+                    >
+                        <div className='label'>Sport</div>
+                        <ol>
+                            <li>Sport</li>
+                            <li>Vesti</li>
+                            <li>Magazin</li>
+                        </ol>
+                    </div>
+                </div>
+                <div className={`custom-template ${templates.type == 'custom'? 'active' : ''}`}>
+                    <div className='custom-template-title'>Custom</div>
+                    <textarea 
+                        className='custom-template-input'
+                        value = {templates.sectionsMain}
+                        onClick={() => setTemplates((prev) => {
+                            prev.type = 'custom';
+                            return {...prev};
+                        })}
+                        onChange = {(e) => {setTemplates((prev) => {
+                            prev.sectionsMain = e.target.value.split(',');
+                            return {...prev}
+                        })}}
+                    ></textarea>
+                </div>
+                <div className='template-manual'>
+                    <div 
+                        className='template-manual-btn' 
+                        onClick={(e) => setShowTemplateManual(prev => !prev)}
+                    >{showTemplateManual? 'Zatvori uputstvo' : 'Procitaj uputstvo za template'}
+                    </div>
+                    {showTemplateManual? 
+                    <div className='template-manual-text'>
+                        Boje delova sajta
+                        Boje delova sajta
+                        Boje delova sajta
+                        Boje delova sajta
+                        Boje delova sajta
+                        Boje delova sajta
+                        Boje delova sajta
+                    </div>
+                    :
+                    ''
+                    }
+                    
+                </div>
             </div>
             <div className='design'>
                 <div className='label-custom'>Napravi custom sekciju</div>

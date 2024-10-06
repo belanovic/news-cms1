@@ -315,7 +315,12 @@
     font-style: italic;
 }
 
+
 /* custom-template */
+
+.custom-template {
+    margin-bottom: 30px;
+}
 
 .custom-template-title {
     color: white;
@@ -325,6 +330,7 @@
 
 .custom-template textarea {
     outline: none;
+
     border: 10px solid white;
     padding: 5px;
     width: 100%;
@@ -341,6 +347,40 @@
 .custom-template.active textarea {
     border: 10px solid green;
 }
+
+/* template-manual */
+
+.template-manual {
+
+    color: white;
+    text-align: center;
+ }
+ .template-manual-btn {
+     width: 300px;
+     margin-bottom: 1em;
+     margin-left: auto;
+     margin-right: auto;
+     display: block;
+     font-size: 1.25rem;
+     font-weight: bold;
+     letter-spacing: 1px;
+     padding: 0.5em 2em 0.5em 2em;
+     box-shadow: 0 0 20px 0 black;
+     color: white;
+     background: rgb(207, 0, 0);
+     transition: transform 250ms;
+     transition: background var(--transition-duration-background);
+     border: none;
+ }
+ .template-manual-text {
+     width: 300px;
+     margin: auto; 
+     font-size: 1.5rem;
+ }
+ .template-manual-btn:hover {
+     cursor: pointer;
+ }
+ 
 
 /* button */
 

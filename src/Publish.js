@@ -23,7 +23,7 @@ export default function Publish({ id, published, position, pageArticles, title, 
             {published?
             <div>
                 <div>Published</div>
-                <div>{position}</div>
+                <div className={`${position == 0? "zero" : ""}`}>{position}</div> 
             </div>
             :
             <button 

@@ -31,7 +31,8 @@ export default function App() {
                     <div class="bottom-plane"></div>
                 </div> */}
 
-                <div className="cmsOverlay" style={{ display: showCmsOverlay }}><div className="loader"></div> </div>
+                <div className="cmsOverlay" style={{ display: showCmsOverlay }}><div className="loader">
+<div class="spinner"></div></div> </div>
                 <Header showHomepageBtn={false} showFrontend={false} allArticlesBtn={false} newArticleBtn={false} />
                 <Switch>
                     <Route exact path="/"> 

@@ -35,7 +35,7 @@
 }
 .order-articles-item-elements:active {
     background: linear-gradient(180deg, rgb(59, 75, 59), rgb(26, 110, 26), rgb(59, 75, 59));
-    background: blue
+    background: rgb(26, 110, 26);
 }
 
 .order-articles-item-elements.arrowUp {
