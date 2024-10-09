@@ -15,7 +15,7 @@ export default function Supertitle({ supertitle, setSupertitle }) {
                 className="supertitle-input"
                 value={supertitle}
                 onChange={handleChangeSupertitle}
-                placeholder={'Unesi naslov'}
+                placeholder={'Unesi nadnaslov'}
             >
             </input>
         </div>

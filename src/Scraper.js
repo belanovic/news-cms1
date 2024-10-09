@@ -28,6 +28,7 @@ export default function Scraper({setTitle, setSubtitle, setInitialText}) {
                 <input
                     value = {url}
                     onChange = {handleChange}
+                    onKeyDown={(e) => {if(e.code == 'NumpadEnter' | e.code == 'Enter') getArticleText(e, url)}}
                 ></input>
                 <button
                     onClick = {(e) => getArticleText(e, url)}
