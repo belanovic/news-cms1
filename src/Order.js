@@ -1,5 +1,5 @@
 import react, { useState, useEffect, useContext } from 'react';
-import { getFrontpageNews, updateFrontpage, getByDate } from './getArticles';
+import { getFrontpageNews, updateFrontpage, getByDate, getSettings } from './getArticles';
 import { context } from './newsContext.js';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import SearchDate from './SearchDate';
@@ -16,6 +16,7 @@ export default function Order() {
     const [activeArrow, setActiveArrow] = useState('');
     const [doubleSelectedArticle, setDoubleSelectedArticle] = useState('');
     const [newsByDateAllComp, setNewsByDateAllComp] = useState([]);
+    const [customs, setCustoms] = useState('');
     const { setActiveLink, setShowCmsOverlay, setPageNum, setCategory,
         setNewArticleBtn, setShowMenu, setShowFrontend, setTitle, setTag,
         setSelectedDate, calendarHandleChange, calendarSetCheckValue } = useContext(context);
@@ -108,6 +109,15 @@ export default function Order() {
             setFrontpageNews(n);
     
             setreorderedArticles(n);
+
+            const settingsMsg = await getSettings();
+            if(settingsMsg == null) {
+                window.location.href = '/';
+            }
+            if(settingsMsg.isSuccess) {
+                setCustoms(settingsMsg.settings.customs);
+            }
+
             setShowCmsOverlay('none');
     
             const d = {
@@ -153,6 +163,22 @@ export default function Order() {
         })
     }, [frontpageNews])
 
+/*     useEffect(() => {console.log(customs)}, [customs]) */
+
+
+    useEffect( () => {
+        async function f() {
+            const settingsMsg = await getSettings();
+            if(settingsMsg == null) {
+                window.location.href = '/';
+            }
+            if(settingsMsg.isSuccess) {
+                setCustoms(settingsMsg.settings.customs);
+            }
+        }
+        f();
+    }, [])
+
     return (
 
         <div className="order">
@@ -185,7 +211,30 @@ export default function Order() {
                                                 {i === 31 && <div className="order-articles-item-label">Sport - glavna</div>}                           
                                                 {i === 32 && <div className="order-articles-item-label">Sport - karusel</div>}                           
                                                 {i === 41 && <div className="order-articles-item-label">Sport - velike vesti</div>}                           
-                                                {i === 45 && <div className="order-articles-item-label">Ostalo</div>}                           
+                                                {i === 45 && <div className="order-articles-item-label">Custom sekcije</div>}
+                                                {customs && customs.map((custom,j) => {
+                                                    if(i + 1 == custom.body.firstArticlePosition) {
+                                                      
+                                                        if((i + 1 == 46) && (custom.caption.text == 'Default naslov')) return;
+                                                        let articlesRange = `articles  ${custom.body.firstArticlePosition}. - ${parseInt(custom.body.firstArticlePosition) + parseInt(custom.body.count) - 1}.`;
+                                                        if(parseInt(custom.body.count) == 1) {  
+                                                            articlesRange = `article  ${custom.body.firstArticlePosition}.`;
+                                                        }
+                                                                           
+                                                        return <div className="order-articles-item-label-custom">
+                                                            
+                                                            {custom.caption.text? 
+                                                            ('custom' + j + ' / ' + custom.caption.text) + ' / ' + articlesRange
+                                                            : 
+                                                            ('custom' + j + ' / ' + 'Nema naslova' + ' / ' + articlesRange) }
+                                                        </div>
+                                                    }
+                                                    /* if((i + 1 == (parseInt(custom.body.firstArticlePosition ) + parseInt(custom.body.count)) && (i + 1 != parseInt(custom.body.firstArticlePosition )))) {
+                                                        return <div className="order-articles-item-label-custom">sldfjksldfj</div>
+                                                    } */
+                                                                      
+                                                })}                    
+                                             
                                                 <div
                                                     ref={provided.innerRef}
                                                     {...provided.draggableProps}
