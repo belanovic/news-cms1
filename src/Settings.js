@@ -476,7 +476,7 @@ export default function Settings() {
                             return {...prev}
                         })}
                     >
-                        <div className='label'>Default</div>
+                        <div className='label'>Vesti</div>
                         <ol>
                             <li>Vesti</li>
                             <li>Magazin</li>
@@ -545,13 +545,24 @@ export default function Settings() {
                     </div>
                     {showTemplateManual? 
                     <div className='template-manual-text'>
-                        Boje delova sajta
-                        Boje delova sajta
-                        Boje delova sajta
-                        Boje delova sajta
-                        Boje delova sajta
-                        Boje delova sajta
-                        Boje delova sajta
+                        <p>Layout frontenda se sastoji iz sekcija koje su vertikalno poredjane prema redosledu napisanom gore.</p>
+                        <p>Možete selektovati jedan od četiri layout-a (tri ponudjena i custom), koji će biti prikazani na frontendu kada sačuvate podešavanja</p>
+                        <p>Nazivi sekcija moraju da budu odvojeni zarezom.</p>
+                        <h3>Sekcije:</h3>
+                        <ul style={{textAlign: 'left'}}>
+                            <li><strong>central</strong> - centralni karusel, pored kojeg je deo sa tri taba (Najnovije, Najčitanije i Trending)</li>
+                            <br></br>
+                            <li><strong>velike vesti</strong>  - četiri kartice poredjane horizontalno u jednom redu</li>
+                            <br></br>
+                            <li><strong>male vesti</strong>  - šest manjih kartica poredjanih u dva reda</li>
+                            <br></br>
+                            <li><strong>preporucujemo</strong>  - karusel od šest većih kartica poredjanih horizontalno, od kojih su u svakom trenutku prikazane tri</li>
+                            <br></br>
+                            <li><strong>line</strong> - horizontalna linija duž celog layouta sa bottom i top marginom, koja služi da razdvoji dve sekcije</li>
+                            <br></br>
+                            <li><strong>space</strong>  - prazan div element sa top i bottom marginama, koji takođe služi da razdvoji dve sekcije</li>
+                            <br></br>
+                        </ul>
                     </div>
                     :
                     ''
@@ -560,7 +571,7 @@ export default function Settings() {
                 </div>
             </div>
             <div className='design'>
-                <div className='label-custom'>Napravi custom sekciju</div>
+                <div className='label-custom'>Podesi custom sekcije</div>
                 <div className='select-custom'>
                     <select                    
                         value={activeCustom}

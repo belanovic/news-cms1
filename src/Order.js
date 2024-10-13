@@ -216,6 +216,7 @@ export default function Order() {
                                                     if(i + 1 == custom.body.firstArticlePosition) {
                                                       
                                                         if((i + 1 == 46) && (custom.caption.text == 'Default naslov')) return;
+                                                        
                                                         let articlesRange = `articles  ${custom.body.firstArticlePosition}. - ${parseInt(custom.body.firstArticlePosition) + parseInt(custom.body.count) - 1}.`;
                                                         if(parseInt(custom.body.count) == 1) {  
                                                             articlesRange = `article  ${custom.body.firstArticlePosition}.`;
