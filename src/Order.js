@@ -17,6 +17,8 @@ export default function Order() {
     const [doubleSelectedArticle, setDoubleSelectedArticle] = useState('');
     const [newsByDateAllComp, setNewsByDateAllComp] = useState([]);
     const [customs, setCustoms] = useState('');
+    const [showOrderManual, setShowOrderManual] = useState(false)
+
     const { setActiveLink, setShowCmsOverlay, setPageNum, setCategory,
         setNewArticleBtn, setShowMenu, setShowFrontend, setTitle, setTag,
         setSelectedDate, calendarHandleChange, calendarSetCheckValue } = useContext(context);
@@ -190,6 +192,36 @@ export default function Order() {
                     }}
                     disabled={requestSent ? true : false}
                 >{requestSent ? 'Ordering...' : 'Uredi'}</button>
+            </div>
+            <div className='order-manual'>
+                    <div 
+                        className='order-manual-btn' 
+                        onClick={(e) => setShowOrderManual(prev => !prev)}
+                    >{showOrderManual? 'Zatvori uputstvo' : 'Procitaj uputstvo'}
+                    </div>
+                    {showOrderManual? 
+                    <div className='order-manual-text'>
+                        <ul style={{textAlign: 'left'}}>
+                        <strong>
+                            <br></br>
+                            <li><p>Objavljena vest i njena pozicija</p></li>
+                            <p>Kada prilikom kreiranja vesti samo čekirate da je objavljena i poziciju ostavite na nuli, ona će se naći na frontendu u datoj kategoriji, ali ne i na naslovnoj strani</p> 
+                            <p>Ako, međutim, objavite vest i upišete odgovarajuću poziciju, ona će se naći na ovoj listi, kao i na naslovnoj strani na frontendu</p>
+                            <li>Raspored vesti po sekcijama
+                                <p>Dole je prikazana lista vesti koje su objavljene i imaju upisanu poziciju od 1 do 99. Pozicije od 1 do 45 su rezervisane za različite unapred napravljene sekcije, i vesti koje imaju te pozicije su na naslovnoj strani u okviru tih sekcija (sport, magazin, centralni karusel...) </p>
+                                <p>Vesti sa pozicijom od 45 do 99 se raspoređuju u custom sekcije, koje će se na ovoj listi pojaviti ako ih podesite u Podešavanjima, tj ako im odredite naslov drugačiji od default-a. U Podešavanjima, takođe, određujete i raspon vesti koje će imati neka custom sekcija, kao mnoge druge stvari...</p>
+                            </li>
+                            <li>Zamena vesti 
+                                <p>vesti se ubacuju na jedno od 99 mesta tako što prvo kliknete na strelicu na desnoj strani vesti koju želite da zamenite, unesite datum u pretragu (to je datum kreiranja vesti), kliknite na Prikaži vesti. Potom izaberite jednu vest i kliknite na Zameni vest. Na kraju kliknete na Uredi na vrhu strane, da bi podešavanja bila sačuvana.</p>
+                                <p>Drugi način da se vest nađe na naslovnoj strani je direktniji. Prilikom objavljivanja vesti, umesto da poziciju ostavite na nuli, može joj se odmah upisati pozicija od 1 do 99, i ona će tako zameniti vest koja ima isti redni broj na ovoj listi, a zamenjena vest će dobiti poziciju nula.</p>
+                            </li>
+                        </strong>
+                        <br></br>
+                        </ul>
+                </div>
+                    :
+                    ''
+                    }
             </div>
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="order-articles-dpl">

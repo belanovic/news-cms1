@@ -181,8 +181,11 @@
     background: rgb(0, 184, 0);
 }
 /* builder-preview */
-
-.custom-preview {
+.custom-preview{
+    background-color: color !important;
+    ;
+}
+.custom-preview-container {
   /*   flex: 0 0 75%; */
     width: 75%;
     margin: auto;

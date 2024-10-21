@@ -55,6 +55,7 @@ export default function Settings() {
     const [activeCustom, setActiveCustom] = useState(0);
     const [requestSent, setRequestSent] = useState(false);
     const [showTemplateManual, setShowTemplateManual] = useState(false)
+    const [showCustomManual, setShowCustomManual] = useState(false)
 
     function generateCustomsComponents() {
         let customsArr = [];
@@ -564,11 +565,37 @@ export default function Settings() {
                             <br></br>
                             <li><strong>ads1, ads2, ads3, ads4 i ads5</strong>  - od 1 do 5 kartica u horizontalnom karuselu, gde je svaka kartica neki ad, koje inače generiše random funkcija prilikom svakog učitavanja naslovne strane</li>
                             <br></br>
-                            <li><strong> custom0 - custom14</strong> - ispod uputstva je deo podešavanja gde možete podesiti 15 custom sekcija, a na naslovnoj strani, na frontendu, biće prikazane one koje napišete u custom layout-u, od custom0 do custom14</li>
-                            <p>U podešavanju custom sekcije (dole) možete podesiti razne boje, border, padding, možete staviti naslov sekcije.</p> 
-                            <p>Najvažnije je da odredite koje će vesti biti u sekciji. Najpre odredite redni broj prve vesti (Pozicija prve vesti), a zatim ukupan broj vesti (Broj vesti u custom sekciji) koji će se, počev od rednog broja prve, naći u sekciji. Listu svih vesti imate u delu sajta gde se podešava Naslovna strana. Vrlo je važno da se raspon vesti koji će se naći u različitim sekcijama ne preklapa, tj. da se iste vesti ne nadju u više sekcija.</p>
+                            <li><strong> custom0 - custom14</strong> - ukupno 15 custom sekcija, koje možete podesiti u delu Podešavanja ispod ovog, a na naslovnoj strani.</li> 
+                            <p>Na frontendu, biće prikazane one custom sekcije koje napišete u custom layout-u, od custom0 do custom14</p>
+                           
+
+                        </ul>
+                    </div>
+                    :
+                    ''
+                    }
+                </div>
+            </div>
+            <div className='design'>
+            <div className='custom-manual'>
+                    <div 
+                        className='custom-manual-btn' 
+                        onClick={(e) => setShowCustomManual(prev => !prev)}
+                    >{showCustomManual? 'Zatvori uputstvo' : 'Procitaj uputstvo za custom'}
+                    </div>
+                    {showCustomManual? 
+                    <div className='custom-manual-text'>
+                        <ul style={{textAlign: 'left'}}>
+                            
+                            <p>U ovom delu možete podesiti 14 custom sekcija, boje, border, padding, možete staviti naslov sekcije.</p> 
+                            <p>Trenutno su podešene i na naslovnoj strani prikazane custom sekcije od nulte do devete</p> 
+                            <p>Najvažnije je da odredite koje će vesti biti u sekciji. Najpre odredite redni broj prve vesti (Pozicija prve vesti), a zatim ukupan broj vesti (Broj vesti u custom sekciji) koji će se, počev od rednog broja prve, naći u sekciji. Listu svih vesti sa rednim brojevima imate u delu sajta gde se podešava Naslovna strana.</p>
+                            <p>Vrlo je važno da se raspon vesti koji će se naći u različitim sekcijama ne preklapa, tj. da se iste vesti ne nadju u više sekcija.</p>
+                            <p>Ako custom sekcija ima više od 5 kartica, one će biti u dva ili više redova</p>
+                            <p>U templejtu možete poredjati više custom sekcija jednu pored druge, da bi tako spojene izgledale kao jedna veća. To je slučaj sa sekcijama Biznis i Oliimpijske igre 2024, koje se zapravo sastoje iz 3 custom sekcije, od kojih samo prva ima naslov</p>
+                            <p>Live preview custom sekcije možete videti ispod dela sa opcijama</p>
                             <p><strong>Napomena: </strong>Prilikom "skakanja" sa jedne custom sekcije na drugu, promene koje ste napravili se neće obrisati. Brišu se tek ako učitate celu stranicu Podešavanja ponovo ili naravno ako idete na opciju Default. </p>
-                            <br></br>
+
                         </ul>
                     </div>
                     :
@@ -576,8 +603,6 @@ export default function Settings() {
                     }
                     
                 </div>
-            </div>
-            <div className='design'>
                 <div className='label-custom'>Podesi custom sekcije</div>
                 <div className='select-custom'>
                     <select                    

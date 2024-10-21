@@ -909,14 +909,18 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
         
                 <div 
                     className='custom-preview'
-                    style={{
-                        borderTop: `${custom.border.borderTop.px}px ${custom.border.borderTop.stil} ${custom.border.borderTop.color}`,
-                        borderBottom: `${custom.border.borderBottom.px}px ${custom.border.borderBottom.stil} ${custom.border.borderBottom.color}`,
-                        borderLeft: `${custom.border.borderLeft.px}px ${custom.border.borderLeft.stil} ${custom.border.borderLeft.color}`,
-                        borderRight: `${custom.border.borderRight.px}px ${custom.border.borderRight.stil} ${custom.border.borderRight.color}`,
-                        borderRadius: `${custom.border.borderRadius.topLeft}% ${custom.border.borderRadius.topRight}% ${custom.border.borderRadius.bottomLeft}% ${custom.border.borderRadius.bottomRight}%`
-                    }}
+                    style={{background: 'white', padding: '50px 0px 50px 0px'}}
                 >
+                    <div 
+                        className='custom-preview-container'
+                        style={{
+                            borderTop: `${custom.border.borderTop.px}px ${custom.border.borderTop.stil} ${custom.border.borderTop.color}`,
+                            borderBottom: `${custom.border.borderBottom.px}px ${custom.border.borderBottom.stil} ${custom.border.borderBottom.color}`,
+                            borderLeft: `${custom.border.borderLeft.px}px ${custom.border.borderLeft.stil} ${custom.border.borderLeft.color}`,
+                            borderRight: `${custom.border.borderRight.px}px ${custom.border.borderRight.stil} ${custom.border.borderRight.color}`,
+                            borderRadius: `${custom.border.borderRadius.topLeft}% ${custom.border.borderRadius.topRight}% ${custom.border.borderRadius.bottomLeft}% ${custom.border.borderRadius.bottomRight}%`
+                        }}
+                    >
                     <div 
                         className='custom-title'
                         style={{
@@ -1119,6 +1123,7 @@ export default function Custom({frontpageNews, index, customs, setCustoms, activ
                         </div>
                         })}
                     </div>
+                </div>
                 </div>
             </div>
   

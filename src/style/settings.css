@@ -348,14 +348,15 @@
     border: 10px solid green;
 }
 
-/* template-manual */
+/* template-manual custom-manual*/
 
-.template-manual {
+.template-manual, .custom-manual, .order-manual {
 
     color: white;
     text-align: center;
  }
- .template-manual-btn {
+
+ .template-manual-btn, .custom-manual-btn, .order-manual-btn {
      width: 300px;
      margin-bottom: 1em;
      margin-left: auto;
@@ -372,12 +373,18 @@
      transition: background var(--transition-duration-background);
      border: none;
  }
- .template-manual-text {
+ .template-manual-text, .custom-manual-text, .order-manual-text {
      width: 300px;
      margin: auto; 
      font-size: 1.5rem;
  }
- .template-manual-btn:hover {
+.order-manual-text {
+     color: black;
+     background-color: rgba(255, 255, 255, 0.7);
+     padding-right: 1em;
+ }
+
+ .template-manual-btn:hover, .custom-manual-btn:hover, .order-manual-btn:hover {
      cursor: pointer;
  }
  
